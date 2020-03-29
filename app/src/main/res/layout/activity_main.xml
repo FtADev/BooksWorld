@@ -9,21 +9,15 @@
         android:id="@+id/appbar"
         layout="@layout/appbar" />
 
-    <fragment
-        android:id="@+id/main_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appbar" />
-
-    <fragment
+    <FrameLayout
         android:id="@+id/book_list_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/appbar" />
 
-    <fragment
-        android:id="@+id/book_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+<!--    <FrameLayout-->
+<!--        android:id="@+id/book_fragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content" />-->
 
 </RelativeLayout>
