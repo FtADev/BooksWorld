@@ -2,7 +2,8 @@ package com.ftadev.booksworld
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.google.android.material.chip.Chip
+import kotlinx.android.synthetic.main.appbar.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +18,16 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.book_list_fragment, firstFragment)
         fragmentTransaction.commit()
+
+        chips_group.setOnCheckedChangeListener { chipGroup, i ->
+            val chip: Chip? = chipGroup.findViewById(i)
+            if (chip != null) {
+                if (chip.id == R.id.all_chip)
+                    allBookClick()
+                else
+                    categoryBookClick()
+            }
+        }
 
     }
 
