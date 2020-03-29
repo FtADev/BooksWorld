@@ -9,8 +9,9 @@
     </style>
 
     <style name="chipTheme" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="android:alpha">0.7</item>
-        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:alpha">0.8</item>
+        <item name="android:textColor">@drawable/chip_text_color</item>
+        <item name="chipBackgroundColor">@drawable/chip_color</item>
     </style>
 
     <style name="chipTextAppearance" parent="TextAppearance.MaterialComponents.Chip">
