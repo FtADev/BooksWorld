@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="150dp"
+    android:layout_width="136dp"
+    android:layout_height="210dp"
+    android:layout_margin="2dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="15dp"
     android:elevation="5dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"/>
 
 </androidx.cardview.widget.CardView>
