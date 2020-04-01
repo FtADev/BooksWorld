@@ -9,10 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ftadev.booksworld.*
-import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import com.ftadev.booksworld.ui.adapter.BookAdapter
 import com.ftadev.booksworld.ui.fragment.AllBooksFragment
 import com.ftadev.booksworld.ui.fragment.CategoryBooksFragment
+import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.appbar.*
@@ -61,15 +61,15 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getBooksImage()
 
 
-        chips_group.setOnCheckedChangeListener { chipGroup, i ->
-            val chip: Chip? = chipGroup.findViewById(i)
-            if (chip != null) {
-                if (chip.id == R.id.all_chip)
-                    allBookClick()
-                else
-                    categoryBookClick()
-            }
-        }
+//        chips_group.setOnCheckedChangeListener { chipGroup, i ->
+//            val chip: Chip? = chipGroup.findViewById(i)
+//            if (chip != null) {
+//                if (chip.id == R.id.all_chip)
+//                    allBookClick()
+//                else
+//                    categoryBookClick()
+//            }
+//        }
 
     }
 

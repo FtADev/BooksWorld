@@ -10,160 +10,161 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/spicy"
         android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <HorizontalScrollView
-        android:id="@+id/l_chips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="30dp"
-        android:scrollbars="none">
+<!--    <HorizontalScrollView-->
+<!--        android:id="@+id/l_chips"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/title"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:scrollbars="none">-->
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chips_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:singleSelection="true">
+<!--        <com.google.android.material.chip.ChipGroup-->
+<!--            android:id="@+id/chips_group"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:singleSelection="true">-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/all_chip"
-                style="@style/chipTheme"
-                android:checked="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/all"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/all_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:checked="true"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/all"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/art_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/art"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/art_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/art"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/fantasy_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fantasy"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/fantasy_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/fantasy"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/biographies_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/biographies"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/biographies_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/biographies"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/science_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/science"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/science_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/science"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/recipes_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/recipes"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/recipes_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/recipes"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/romance_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/romance"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/romance_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/romance"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/religion_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/religion"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/religion_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/religion"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/mystery_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mystery"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/mystery_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/mystery"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/music_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/music"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/music_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/music"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/medicine_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/medicine"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/medicine_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/medicine"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/plays_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/plays"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/plays_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/plays"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/history_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/history"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/history_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/history"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/children_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/children"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/children_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/children"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/science_f_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/science_f"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/science_f_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/science_f"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/textbooks_chip"
-                style="@style/chipTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textbooks"
-                android:textAppearance="@style/chipTextAppearance" />
+<!--            <com.google.android.material.chip.Chip-->
+<!--                android:id="@+id/textbooks_chip"-->
+<!--                style="@style/chipTheme"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/textbooks"-->
+<!--                android:textAppearance="@style/chipTextAppearance" />-->
 
-        </com.google.android.material.chip.ChipGroup>
+<!--        </com.google.android.material.chip.ChipGroup>-->
 
 
-    </HorizontalScrollView>
+<!--    </HorizontalScrollView>-->
 </RelativeLayout>
