@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-public object RetrofitManager {
+object RetrofitManager {
 
     val apiService: ApiService
 
