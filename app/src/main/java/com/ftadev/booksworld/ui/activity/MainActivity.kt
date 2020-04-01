@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ftadev.booksworld.*
 import com.ftadev.booksworld.ui.adapter.BookAdapter
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         bookAdapter = BookAdapter()
 
         //setting layout manager to recycler view and adapter
-        rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv.layoutManager = GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false)
         rv.adapter = bookAdapter
 
         //before calling api register live data observer
