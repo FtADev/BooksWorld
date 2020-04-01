@@ -1,10 +1,12 @@
-package com.ftadev.booksworld
+package com.ftadev.booksworld.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.ftadev.booksworld.R
+import com.ftadev.booksworld.model.BookModel
 import com.squareup.picasso.Picasso
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {

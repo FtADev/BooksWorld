@@ -1,5 +1,6 @@
-package com.ftadev.booksworld
+package com.ftadev.booksworld.api
 
+import com.ftadev.booksworld.model.BookModel
 import retrofit2.Response
 import retrofit2.http.GET
 

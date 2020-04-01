@@ -1,4 +1,4 @@
-package com.ftadev.booksworld
+package com.ftadev.booksworld.api
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

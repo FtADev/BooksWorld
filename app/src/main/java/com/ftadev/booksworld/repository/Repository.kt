@@ -1,4 +1,6 @@
-package com.ftadev.booksworld
+package com.ftadev.booksworld.repository
+
+import com.ftadev.booksworld.api.ApiService
 
 class Repository(private val service: ApiService) {
 

@@ -1,4 +1,4 @@
-package com.ftadev.booksworld
+package com.ftadev.booksworld.model
 
 data class BookModel(
     val author: String,

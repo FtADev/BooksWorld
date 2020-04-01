@@ -1,4 +1,4 @@
-package com.ftadev.booksworld
+package com.ftadev.booksworld.ui.activity
 
 import android.os.Build
 import android.os.Bundle
@@ -8,6 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ftadev.booksworld.*
+import com.ftadev.booksworld.ui.viewmodel.MainViewModel
+import com.ftadev.booksworld.ui.adapter.UserAdapter
+import com.ftadev.booksworld.ui.fragment.AllBooksFragment
+import com.ftadev.booksworld.ui.fragment.CategoryBooksFragment
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.appbar.*
@@ -16,8 +21,10 @@ import kotlinx.android.synthetic.main.appbar.*
 class MainActivity : AppCompatActivity() {
 
     private val fragmentManager = supportFragmentManager
-    private val firstFragment = AllBooksFragment()
-    private val secondFragment = CategoryBooksFragment()
+    private val firstFragment =
+        AllBooksFragment()
+    private val secondFragment =
+        CategoryBooksFragment()
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var userAdapter: UserAdapter
