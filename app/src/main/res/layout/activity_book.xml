@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_appbar">
+
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="136dp"
+            android:layout_height="210dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="56dp"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/photo"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:fontFamily="@font/dekko" />
+
+        <TextView
+            android:id="@+id/author"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_toEndOf="@id/photo"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/dekko" />
+
+        <TextView
+            android:id="@+id/category"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/author"
+            android:layout_toEndOf="@id/photo"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:fontFamily="@font/dekko" />
+
+        <TextView
+            android:id="@+id/page_num_title"
+            android:text="Number of pages:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/category"
+            android:layout_toEndOf="@id/photo"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="@font/dekko" />
+
+        <TextView
+            android:id="@+id/page_num"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/category"
+            android:layout_toEndOf="@id/page_num_title"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="@font/dekko" />
+
+        <com.willy.ratingbar.ScaleRatingBar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/rb"
+            android:layout_below="@id/photo"
+            android:layout_marginStart="36dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srb_numStars="5"
+            app:srb_minimumStars="1"
+            app:srb_rating="2"
+            app:srb_starWidth="15dp"
+            app:srb_starHeight="15dp"
+            app:srb_starPadding="2dp"
+            app:srb_stepSize="0.5"
+            app:srb_isIndicator="false"
+            app:srb_clickable="false"
+            app:srb_scrollable="true"
+            app:srb_clearRatingEnabled="true">
+        </com.willy.ratingbar.ScaleRatingBar>
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/descr"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="16dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/dekko" />
+    </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="View Book"
+        android:background="@drawable/bg_btn"
+        android:textColor="@color/white"
+        android:fontFamily="@font/dekko"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="56dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="10dp"/>
+
+</RelativeLayout>
