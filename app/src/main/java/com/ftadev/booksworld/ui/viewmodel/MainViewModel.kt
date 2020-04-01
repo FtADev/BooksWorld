@@ -10,10 +10,10 @@ class MainViewModel : ViewModel() {
     private val mainRepository =
         MainRepository()
 
-    val usersSuccessLiveData = mainRepository.usersSuccessLiveData
-    val usersFailureLiveData = mainRepository.usersFailureLiveData
+    val booksSuccessLiveData = mainRepository.booksSuccessLiveData
+    val booksFailureLiveData = mainRepository.booksFailureLiveData
 
-    fun getUsers() {
+    fun getBooks() {
         //this is coroutine viewmodel scope to call suspend fun of repo
         viewModelScope.launch { mainRepository.getBooks() }
 

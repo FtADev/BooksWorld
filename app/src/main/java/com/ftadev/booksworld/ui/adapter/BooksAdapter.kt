@@ -9,45 +9,45 @@ import com.ftadev.booksworld.R
 import com.ftadev.booksworld.model.BookModel
 import com.squareup.picasso.Picasso
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
-    private var userList: ArrayList<BookModel> = ArrayList()
+    private var bookList: ArrayList<BookModel> = ArrayList()
 
-    fun setUsers(users: List<BookModel>) {
+    fun setBooks(books: List<BookModel>) {
 
-        userList.addAll(users)
+        bookList.addAll(books)
         notifyDataSetChanged()
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_book, parent, false)
 
-        return UserViewHolder(view)
+        return BookViewHolder(view)
     }
 
     override fun getItemCount(): Int {
 
-        return userList.size
+        return bookList.size
     }
 
-    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
 
-        val user = userList[position]
+        val book = bookList[position]
 
-//        holder.userId.text = user.id.toString()
-//        holder.name.text = user.title
-//        holder.userName.text = user.username
-//        holder.email.text = user.email
-        Picasso.get().load(user.photo).into(holder.image);
+//        holder.bookId.text = book.id.toString()
+//        holder.name.text = book.title
+//        holder.bookName.text = book.bookname
+//        holder.email.text = book.email
+        Picasso.get().load(book.photo).into(holder.image);
     }
 
-    class UserViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
+    class BookViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
 
-//        val userId = parent.findViewById<TextView>(R.id.userId)
+//        val bookId = parent.findViewById<TextView>(R.id.bookId)
 //        val name = parent.findViewById<TextView>(R.id.name)
-//        val userName = parent.findViewById<TextView>(R.id.userName)
+//        val bookName = parent.findViewById<TextView>(R.id.bookName)
 //        val email = parent.findViewById<TextView>(R.id.email)
         val image = parent.findViewById<ImageView>(R.id.image)
 

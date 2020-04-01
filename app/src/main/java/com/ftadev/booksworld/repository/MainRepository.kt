@@ -11,8 +11,8 @@ class MainRepository {
 
     private val apiService = RetrofitManager.apiService
 
-    val usersSuccessLiveData = MutableLiveData<List<BookModel>>()
-    val usersFailureLiveData = MutableLiveData<Boolean>()
+    val booksSuccessLiveData = MutableLiveData<List<BookModel>>()
+    val booksFailureLiveData = MutableLiveData<Boolean>()
 
     /*
     this fun is suspend fun means it will execute in different thread
@@ -31,29 +31,29 @@ class MainRepository {
             if (response.isSuccessful) {
                 Log.d(TAG, "SUCCESS")
                 Log.d(TAG, "${response.body()}")
-                usersSuccessLiveData.postValue(response.body())
+                booksSuccessLiveData.postValue(response.body())
 
             } else {
                 Log.d(TAG, "FAILURE")
                 Log.d(TAG, "${response.body()}")
-                usersFailureLiveData.postValue(true)
+                booksFailureLiveData.postValue(true)
             }
 
         } catch (e: UnknownHostException) {
             Log.e(TAG, e.message)
             //this exception occurs when there is no internet connection or host is not available
-            //so inform user that something went wrong
-            usersFailureLiveData.postValue(true)
+            //so inform book that something went wrong
+            booksFailureLiveData.postValue(true)
         } catch (e: SocketTimeoutException) {
             Log.e(TAG, e.message)
             //this exception occurs when time out will happen
-            //so inform user that something went wrong
-            usersFailureLiveData.postValue(true)
+            //so inform book that something went wrong
+            booksFailureLiveData.postValue(true)
         } catch (e: Exception) {
             Log.e(TAG, e.message)
             //this is generic exception handling
-            //so inform user that something went wrong
-            usersFailureLiveData.postValue(true)
+            //so inform book that something went wrong
+            booksFailureLiveData.postValue(true)
         }
 
     }

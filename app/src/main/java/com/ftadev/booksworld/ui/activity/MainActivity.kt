@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ftadev.booksworld.*
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
-import com.ftadev.booksworld.ui.adapter.UserAdapter
+import com.ftadev.booksworld.ui.adapter.BookAdapter
 import com.ftadev.booksworld.ui.fragment.AllBooksFragment
 import com.ftadev.booksworld.ui.fragment.CategoryBooksFragment
 import com.google.android.material.chip.Chip
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         CategoryBooksFragment()
 
     private lateinit var mainViewModel: MainViewModel
-    private lateinit var userAdapter: UserAdapter
+    private lateinit var bookAdapter: BookAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,17 +48,17 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        userAdapter = UserAdapter()
+        bookAdapter = BookAdapter()
 
         //setting layout manager to recycler view and adapter
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rv.adapter = userAdapter
+        rv.adapter = bookAdapter
 
         //before calling api register live data observer
         registerObservers()
 
-        //calling user list api
-        mainViewModel.getUsers()
+        //calling book list api
+        mainViewModel.getBooks()
 
 
         chips_group.setOnCheckedChangeListener { chipGroup, i ->
@@ -75,17 +75,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun registerObservers() {
 
-        mainViewModel.usersSuccessLiveData.observe(this, Observer { userList ->
+        mainViewModel.booksSuccessLiveData.observe(this, Observer { bookList ->
 
-            //if it is not null then we will display all users
-            userList?.let {
-                userAdapter.setUsers(it)
+            //if it is not null then we will display all books
+            bookList?.let {
+                bookAdapter.setBooks(it)
             }
         })
 
-        mainViewModel.usersFailureLiveData.observe(this, Observer { isFailed ->
+        mainViewModel.booksFailureLiveData.observe(this, Observer { isFailed ->
 
-            //if it is not null then we will display all users
+            //if it is not null then we will display all books
             isFailed?.let {
                 Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
             }

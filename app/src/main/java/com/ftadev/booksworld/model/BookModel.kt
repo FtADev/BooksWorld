@@ -10,5 +10,6 @@ data class BookModel(
     val publisher: String?,
     val rate: Double,
     val translator: String?,
-    val pageNumber: Int?
+    val pageNumber: Int?,
+    val link: String?
 )
