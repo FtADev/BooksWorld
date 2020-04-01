@@ -12,6 +12,8 @@ class MainViewModel : ViewModel() {
 
     val booksSuccessLiveData = mainRepository.booksImageSuccessLiveData
     val booksFailureLiveData = mainRepository.booksImageFailureLiveData
+    val bookInfoSuccessLiveData = mainRepository.bookSuccessLiveData
+    val bookInfoFailureLiveData = mainRepository.bookFailureLiveData
 
     fun getBooksImage() {
         //this is coroutine viewmodel scope to call suspend fun of repo
