@@ -2,7 +2,7 @@ package com.ftadev.booksworld.model
 
 data class BookModel(
     val author: String,
-    val category: String,
+    val category: String?,
     val descr: String,
     val id: Int,
     val name: String,
