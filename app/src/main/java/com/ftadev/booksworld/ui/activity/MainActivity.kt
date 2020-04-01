@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         registerObservers()
 
         //calling book list api
-        mainViewModel.getBooks()
+        mainViewModel.getBooksImage()
 
 
         chips_group.setOnCheckedChangeListener { chipGroup, i ->
