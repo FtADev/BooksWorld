@@ -10,12 +10,17 @@ class MainViewModel : ViewModel() {
     private val mainRepository =
         MainRepository()
 
-    val booksSuccessLiveData = mainRepository.booksSuccessLiveData
-    val booksFailureLiveData = mainRepository.booksFailureLiveData
+    val booksSuccessLiveData = mainRepository.booksImageSuccessLiveData
+    val booksFailureLiveData = mainRepository.booksImageFailureLiveData
 
-    fun getBooks() {
+    fun getBooksImage() {
         //this is coroutine viewmodel scope to call suspend fun of repo
-        viewModelScope.launch { mainRepository.getBooks() }
+        viewModelScope.launch { mainRepository.getBooksImage() }
+
+    }
+
+    fun getBookInfo(id: Int) {
+        viewModelScope.launch { mainRepository.getBookInfo(id) }
 
     }
 }
