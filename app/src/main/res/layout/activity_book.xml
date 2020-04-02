@@ -10,13 +10,34 @@
         android:background="@drawable/bg_appbar">
 
         <ImageView
+            android:id="@+id/search"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="46dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/search" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="46dp"
+            android:src="@drawable/back" />
+
+        <ImageView
             android:id="@+id/photo"
             android:layout_width="136dp"
             android:layout_height="210dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="56dp"/>
+            android:layout_below="@id/back"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"/>
 
         <TextView
             android:id="@+id/book_title"
@@ -24,9 +45,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/photo"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginStart="24dp"
+            android:layout_below="@id/search"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="25sp"
@@ -87,12 +109,13 @@
         <com.willy.ratingbar.ScaleRatingBar
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/rb"
-            android:layout_below="@id/photo"
-            android:layout_marginStart="36dp"
-            android:layout_marginBottom="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_below="@id/page_num"
+            android:layout_marginStart="24dp"
+            android:layout_toEndOf="@id/photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
             app:srb_numStars="5"
             app:srb_minimumStars="1"
             app:srb_rating="2"
@@ -103,7 +126,7 @@
             app:srb_isIndicator="false"
             app:srb_clickable="false"
             app:srb_scrollable="true"
-            app:srb_clearRatingEnabled="true">
+            app:srb_clearRatingEnabled="false">
         </com.willy.ratingbar.ScaleRatingBar>
 
 
@@ -141,5 +164,17 @@
         android:layout_marginBottom="56dp"
         android:paddingHorizontal="24dp"
         android:paddingVertical="10dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_bookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bookmark_add"
+        android:background="@drawable/bg_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="56dp"
+        android:paddingHorizontal="24dp"/>
 
 </RelativeLayout>
