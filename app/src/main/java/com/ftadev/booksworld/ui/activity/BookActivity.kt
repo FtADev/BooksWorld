@@ -1,5 +1,7 @@
 package com.ftadev.booksworld.ui.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View.GONE
@@ -12,6 +14,7 @@ import com.ftadev.booksworld.R
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_book.*
+
 
 class BookActivity : AppCompatActivity() {
 
@@ -51,6 +54,12 @@ class BookActivity : AppCompatActivity() {
                 rb.rating = book.rate.toFloat()
                 page_num.text = book.pageNumber.toString()
                 descr.text = book.descr
+
+                view_btn.setOnClickListener {
+                    val browserIntent =
+                        Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
+                    startActivity(browserIntent)
+                }
             }
         })
 
