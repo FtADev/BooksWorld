@@ -9,18 +9,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ftadev.booksworld.*
+import com.ftadev.booksworld.R
 import com.ftadev.booksworld.ui.adapter.BookAdapter
 import com.ftadev.booksworld.ui.fragment.AllBooksFragment
 import com.ftadev.booksworld.ui.fragment.CategoryBooksFragment
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
-import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.appbar.*
 
 
 class MainActivity : AppCompatActivity() {
-
     private val fragmentManager = supportFragmentManager
     private val firstFragment =
         AllBooksFragment()
@@ -29,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var bookAdapter: BookAdapter
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         //calling book list api
         mainViewModel.getBooksImage()
 
-
 //        chips_group.setOnCheckedChangeListener { chipGroup, i ->
 //            val chip: Chip? = chipGroup.findViewById(i)
 //            if (chip != null) {
@@ -74,13 +70,10 @@ class MainActivity : AppCompatActivity() {
 //                    categoryBookClick()
 //            }
 //        }
-
     }
 
     private fun registerObservers() {
-
         mainViewModel.booksSuccessLiveData.observe(this, Observer { bookList ->
-
             //if it is not null then we will display all books
             bookList?.let {
                 bookAdapter.setBooks(it)
@@ -88,13 +81,11 @@ class MainActivity : AppCompatActivity() {
         })
 
         mainViewModel.booksFailureLiveData.observe(this, Observer { isFailed ->
-
             //if it is not null then we will display all books
             isFailed?.let {
                 Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
-
     }
 
 

@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_book.*
 
 
 class BookActivity : AppCompatActivity() {
-
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,11 +36,9 @@ class BookActivity : AppCompatActivity() {
 
         val id = intent.getIntExtra("ID", 0)
         mainViewModel.getBookInfo(id)
-
     }
 
     private fun registerObservers() {
-
         mainViewModel.bookInfoSuccessLiveData.observe(this, Observer { book ->
             book?.let {
                 book_title.text = book.name
@@ -68,8 +65,5 @@ class BookActivity : AppCompatActivity() {
                 Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
-
     }
-
-
 }
