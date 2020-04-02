@@ -52,6 +52,9 @@ class MainActivity : AppCompatActivity() {
         bookAdapter = BookAdapter()
 
         //setting layout manager to recycler view and adapter
+        my_books.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        my_books.adapter = bookAdapter
+
         rv.layoutManager = GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false)
         rv.adapter = bookAdapter
 
