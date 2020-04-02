@@ -32,7 +32,8 @@ class BookActivity : AppCompatActivity() {
 
         registerObservers()
 
-        mainViewModel.getBookInfo(1)
+        val id = intent.getIntExtra("ID", 0)
+        mainViewModel.getBookInfo(id)
 
     }
 

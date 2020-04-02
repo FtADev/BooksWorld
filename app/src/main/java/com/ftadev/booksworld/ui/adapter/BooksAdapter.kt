@@ -1,13 +1,15 @@
 package com.ftadev.booksworld.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.ftadev.booksworld.R
 import com.ftadev.booksworld.model.BookImageModel
+import com.ftadev.booksworld.ui.activity.BookActivity
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.card_book.view.*
 
 class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
@@ -33,14 +35,21 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-
-        val book = bookList[position]
-        Picasso.get().load(book.photo).into(holder.image);
+        holder.bindList(bookList[position])
     }
 
     class BookViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
 
-        val image = parent.findViewById<ImageView>(R.id.image)
+        fun bindList(book: BookImageModel) {
+            itemView.run {
+                Picasso.get().load(book.photo).into(image);
+            }
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, BookActivity::class.java)
+                intent.putExtra("ID", book.id)
+                itemView.context.startActivity(intent)
+            }
+        }
 
     }
 
