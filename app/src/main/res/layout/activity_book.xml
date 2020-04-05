@@ -108,7 +108,8 @@
             android:textColor="@color/white"
             android:textSize="14sp" />
 
-        <com.willy.ratingbar.ScaleRatingBar xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.willy.ratingbar.ScaleRatingBar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,11 +124,11 @@
             app:srb_minimumStars="1"
             app:srb_numStars="5"
             app:srb_rating="2"
-            app:srb_scrollable="true"
+            app:srb_scrollable="false"
             app:srb_starHeight="15dp"
             app:srb_starPadding="2dp"
             app:srb_starWidth="15dp"
-            app:srb_stepSize="0.5"></com.willy.ratingbar.ScaleRatingBar>
+            app:srb_stepSize="0.5"/>
 
 
     </RelativeLayout>
