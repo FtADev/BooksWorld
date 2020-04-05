@@ -1,26 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.activity.MainActivity"
-    app:layoutDescription="@xml/collapsing_toolbar">
+    android:background="@drawable/bg_appbar">
 
     <!--    Icons From https://icons8.com/  -->
 
-    <include
-        android:id="@+id/appbar"
-        layout="@layout/appbar" />
+    <com.psoffritti.slidingpanel.SlidingPanel
+        android:id="@+id/sliding_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:orientation="vertical"
+        app:nonSlidingView="@id/appbar"
+        app:slidingView="@id/rv_layout"
+        app:dragView="@id/dash">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar"/>
+        <include
+            android:id="@+id/appbar"
+            layout="@layout/appbar" />
+
+        <RelativeLayout
+            android:id="@+id/rv_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rv"
+            android:layout_below="@id/appbar">
+
+            <RelativeLayout
+                android:id="@+id/dash"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="3dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal"
+                    android:background="@color/colorPrimary"/>
+
+            </RelativeLayout>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_below="@id/dash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="36dp"
+                android:layout_centerHorizontal="true" />
+
+
+        </RelativeLayout>
+
+    </com.psoffritti.slidingpanel.SlidingPanel>
+
+
+
 
     <FrameLayout
         android:id="@+id/book_list_fragment"
@@ -29,11 +69,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar"/>
+        app:layout_constraintTop_toBottomOf="@id/sliding_panel"/>
 
 <!--    <FrameLayout-->
 <!--        android:id="@+id/book_fragment"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content" />-->
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</RelativeLayout>
