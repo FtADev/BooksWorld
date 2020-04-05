@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.card_book.view.*
 
 
 class BookActivity : AppCompatActivity() {
+    var isBookmark = false // TODO(Get from local db)
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,12 +33,32 @@ class BookActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_book)
 
+        // TODO(Should be read from local db)
+        if(isBookmark) bookmark.setImageResource(R.drawable.bookmark_added)
+        else bookmark.setImageResource(R.drawable.bookmark_add)
+
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         registerObservers()
 
         val id = intent.getIntExtra("ID", 0)
         mainViewModel.getBookInfo(id)
+
+        bookmark.setOnClickListener {
+            isBookmark = !isBookmark
+            if(isBookmark) {
+                bookmark.setImageResource(R.drawable.bookmark_added)
+                Toast.makeText(this, "Added to Bookmark!", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                bookmark.setImageResource(R.drawable.bookmark_add)
+                Toast.makeText(this, "Removed from Bookmark!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        back.setOnClickListener {
+            super.onBackPressed()
+        }
     }
 
     private fun registerObservers() {
