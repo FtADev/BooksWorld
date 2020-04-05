@@ -9,7 +9,7 @@
         android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_appbar">
+        android:background="@drawable/bg_book">
 
         <ImageView
             android:id="@+id/search"
@@ -133,10 +133,46 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_appbar"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/useless"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <RelativeLayout
+            android:id="@+id/view_btn"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/useless">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Book"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:fontFamily="@font/dekko"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/top_layout">
+        android:layout_below="@id/top_layout"
+        android:background="@drawable/bg_descr"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:scrollbars="none">
 
         <TextView
             android:id="@+id/descr"
@@ -149,33 +185,5 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
     </ScrollView>
-
-    <Button
-        android:id="@+id/view_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/bg_btn"
-        android:fontFamily="@font/dekko"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="10dp"
-        android:text="View Book"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_bookmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/bg_btn"
-        android:paddingHorizontal="24dp"
-        android:src="@drawable/bookmark_add" />
 
 </RelativeLayout>
