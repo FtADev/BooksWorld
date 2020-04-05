@@ -42,7 +42,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
         fun bindList(book: BookImageModel) {
             itemView.run {
-                Picasso.get().load(book.photo).into(image);
+                Picasso.get().load(book.photo).into(image)
             }
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, BookActivity::class.java)
