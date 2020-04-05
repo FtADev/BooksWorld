@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ftadev.booksworld.R
 import com.ftadev.booksworld.model.BookImageModel
+import com.ftadev.booksworld.ui.RoundedTransformation
 import com.ftadev.booksworld.ui.activity.BookActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_book.view.*
@@ -42,7 +43,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
         fun bindList(book: BookImageModel) {
             itemView.run {
-                Picasso.get().load(book.photo).into(image)
+                Picasso.get().load(book.photo).transform(RoundedTransformation(20,0)).into(image)
             }
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, BookActivity::class.java)

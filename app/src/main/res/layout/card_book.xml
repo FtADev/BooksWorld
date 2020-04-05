@@ -2,8 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="136dp"
     android:layout_height="210dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="20dp"
     android:layout_marginVertical="20dp"
+    app:cardCornerRadius="20dp"
     android:elevation="5dp">
 
     <androidx.appcompat.widget.AppCompatImageView
