@@ -11,9 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ftadev.booksworld.R
+import com.ftadev.booksworld.ui.RoundedTransformation
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_book.*
+import kotlinx.android.synthetic.main.card_book.view.*
 
 
 class BookActivity : AppCompatActivity() {
@@ -47,7 +49,7 @@ class BookActivity : AppCompatActivity() {
                     category.text = book.category
                 else
                     category.visibility = GONE
-                Picasso.get().load(book.photo).into(photo)
+                Picasso.get().load(book.photo).transform(RoundedTransformation(20,0)).into(photo)
                 rb.rating = book.rate.toFloat()
                 page_num.text = book.pageNumber.toString()
                 descr.text = book.descr
