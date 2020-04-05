@@ -15,7 +15,7 @@ import com.ftadev.booksworld.ui.fragment.AllBooksFragment
 import com.ftadev.booksworld.ui.fragment.CategoryBooksFragment
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.appbar.*
+import kotlinx.android.synthetic.main.appbar2.*
 
 
 class MainActivity : AppCompatActivity() {

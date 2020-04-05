@@ -9,25 +9,29 @@
 
     <!--    Icons From https://icons8.com/  -->
 
+    <include android:id="@+id/appbar"
+        layout="@layout/appbar" />
+
     <com.psoffritti.slidingpanel.SlidingPanel
         android:id="@+id/sliding_panel"
+        android:layout_below="@id/appbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:orientation="vertical"
-        app:nonSlidingView="@id/appbar"
+        app:nonSlidingView="@id/appbar2"
         app:slidingView="@id/rv_layout"
         app:dragView="@id/dash">
 
         <include
-            android:id="@+id/appbar"
-            layout="@layout/appbar" />
+            android:id="@+id/appbar2"
+            layout="@layout/appbar2" />
 
         <RelativeLayout
             android:id="@+id/rv_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_rv"
-            android:layout_below="@id/appbar">
+            android:layout_below="@id/appbar2">
 
             <RelativeLayout
                 android:id="@+id/dash"
