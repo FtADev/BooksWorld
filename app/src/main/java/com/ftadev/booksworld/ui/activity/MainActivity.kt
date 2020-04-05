@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         my_books.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         my_books.adapter = bookAdapter
 
-        rv.layoutManager = GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false)
+        rv.layoutManager = GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
         rv.adapter = bookAdapter
 
         //before calling api register live data observer
