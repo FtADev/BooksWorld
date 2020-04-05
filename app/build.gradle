@@ -67,4 +67,7 @@ dependencies {
 
     // RatingBar
     implementation 'com.github.ome450901:SimpleRatingBar:1.5.0'
+
+    implementation 'com.psoffritti.slidingpanel:core:1.0.0'
+
 }
