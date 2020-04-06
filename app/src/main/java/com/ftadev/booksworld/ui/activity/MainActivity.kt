@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        bookAdapter = BookAdapter()
+        bookAdapter = BookAdapter(this)
 
         //setting layout manager to recycler view and adapter
         my_books.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)

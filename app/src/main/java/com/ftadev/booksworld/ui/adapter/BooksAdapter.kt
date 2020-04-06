@@ -1,9 +1,11 @@
 package com.ftadev.booksworld.ui.adapter
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.ftadev.booksworld.R
 import com.ftadev.booksworld.model.BookImageModel
@@ -12,7 +14,7 @@ import com.ftadev.booksworld.ui.activity.BookActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_book.view.*
 
-class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
+class BookAdapter(private val context: Context) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     private var bookList: ArrayList<BookImageModel> = ArrayList()
 
@@ -36,14 +38,16 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        holder.bindList(bookList[position])
+        holder.bindList(context, bookList[position])
     }
 
     class BookViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
 
-        fun bindList(book: BookImageModel) {
+        fun bindList(context: Context, book: BookImageModel) {
+            itemView.animation =
+                AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
             itemView.run {
-                Picasso.get().load(book.photo).transform(RoundedTransformation(20,0)).into(image)
+                Picasso.get().load(book.photo).transform(RoundedTransformation(20, 0)).into(image)
             }
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, BookActivity::class.java)
