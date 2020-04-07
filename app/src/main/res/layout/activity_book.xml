@@ -142,12 +142,12 @@
         <RelativeLayout
             android:id="@+id/useless"
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="50dp"/>
 
         <RelativeLayout
             android:id="@+id/view_btn"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_below="@id/useless">
 
             <TextView
@@ -171,7 +171,7 @@
         android:layout_below="@id/top_layout"
         android:background="@drawable/bg_descr"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="60dp"
         android:scrollbars="none">
 
         <TextView
