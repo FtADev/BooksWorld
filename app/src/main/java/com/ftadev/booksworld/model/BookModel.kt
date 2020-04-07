@@ -1,6 +1,11 @@
 package com.ftadev.booksworld.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "book")
 data class BookModel(
+    @PrimaryKey
     val id: Int,
     val author: String,
     val category: String?,
