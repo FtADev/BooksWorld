@@ -11,16 +11,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ftadev.booksworld.R
+import com.ftadev.booksworld.model.BookModel
 import com.ftadev.booksworld.ui.RoundedTransformation
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_book.*
-import kotlinx.android.synthetic.main.card_book.view.*
 
 
 class BookActivity : AppCompatActivity() {
     var isBookmark = false // TODO(Get from local db)
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var resBook: BookModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +48,7 @@ class BookActivity : AppCompatActivity() {
         bookmark.setOnClickListener {
             isBookmark = !isBookmark
             if(isBookmark) {
+                mainViewModel.addBookmark(resBook)
                 bookmark.setImageResource(R.drawable.bookmark_added)
                 Toast.makeText(this, "Added to Bookmark!", Toast.LENGTH_SHORT).show()
             }
@@ -64,16 +66,17 @@ class BookActivity : AppCompatActivity() {
     private fun registerObservers() {
         mainViewModel.bookInfoSuccessLiveData.observe(this, Observer { book ->
             book?.let {
-                book_title.text = book.name
-                author.text = book.author
-                if (book.category != null)
-                    category.text = book.category
+                resBook = it
+                book_title.text = it.name
+                author.text = it.author
+                if (it.category != null)
+                    category.text = it.category
                 else
                     category.visibility = GONE
-                Picasso.get().load(book.photo).transform(RoundedTransformation(20,0)).into(photo)
-                rb.rating = book.rate.toFloat()
-                page_num.text = book.pageNumber.toString()
-                descr.text = book.descr
+                Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
+                rb.rating = it.rate.toFloat()
+                page_num.text = it.pageNumber.toString()
+                descr.text = it.descr
 
                 view_btn.setOnClickListener {
                     val browserIntent =
