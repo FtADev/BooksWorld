@@ -18,16 +18,8 @@ class MainRepository {
     val bookSuccessLiveData = MutableLiveData<BookModel>()
     val bookFailureLiveData = MutableLiveData<Boolean>()
 
-    /*
-    this fun is suspend fun means it will execute in different thread
-     */
     suspend fun getBooksImage() {
-
         try {
-
-            //here api calling became so simple just 1 line of code
-            //there is no callback needed
-
             val response = apiService.getBookImages()
 
             Log.d(TAG, "$response")
@@ -46,20 +38,16 @@ class MainRepository {
         } catch (e: UnknownHostException) {
             Log.e(TAG, e.message)
             //this exception occurs when there is no internet connection or host is not available
-            //so inform book that something went wrong
             booksImageFailureLiveData.postValue(true)
         } catch (e: SocketTimeoutException) {
             Log.e(TAG, e.message)
             //this exception occurs when time out will happen
-            //so inform book that something went wrong
             booksImageFailureLiveData.postValue(true)
         } catch (e: Exception) {
             Log.e(TAG, e.message)
             //this is generic exception handling
-            //so inform book that something went wrong
             booksImageFailureLiveData.postValue(true)
         }
-
     }
 
     suspend fun getBookInfo(id: Int) {
