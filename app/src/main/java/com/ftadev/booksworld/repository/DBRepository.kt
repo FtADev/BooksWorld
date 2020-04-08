@@ -1,12 +1,12 @@
 package com.ftadev.booksworld.repository
 
 import android.app.Application
-import androidx.lifecycle.MutableLiveData
 import com.ftadev.booksworld.db.BookDao
 import com.ftadev.booksworld.db.BookDatabase
 import com.ftadev.booksworld.model.BookModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
@@ -22,8 +22,11 @@ class DBRepository(application: Application) : CoroutineScope {
         bookDao = db?.bookDao()
     }
 
+    fun addBook(book: BookModel) {
+        launch  { addBookBG(book) }
+    }
 
-    suspend fun addBook(book: BookModel) {
+    private suspend fun addBookBG(book: BookModel) {
         withContext(Dispatchers.IO) {
             bookDao?.addBook(book)
         }

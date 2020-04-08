@@ -31,7 +31,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getBookmarkInfo(id: Int) = dbRepository.getBook(id)
 
-    fun addBookmark(book: BookModel) {
-        viewModelScope.launch { dbRepository.addBook(book) }
-    }
+    fun addBookmark(book: BookModel) = dbRepository.addBook(book)
+
 }
