@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.activity_book.*
 
 
 class BookActivity : AppCompatActivity() {
-    var isBookmark = false // TODO(Get from local db)
     private lateinit var mainViewModel: MainViewModel
     private lateinit var resBook: BookModel
 
@@ -34,25 +33,29 @@ class BookActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_book)
 
-        // TODO(Should be read from local db)
-        if(isBookmark) bookmark.setImageResource(R.drawable.bookmark_added)
+        val id = intent.getIntExtra("ID", 0)
+        var isComeFromDB = intent.getBooleanExtra("isComeFromDB", false)
+
+        if (isComeFromDB) bookmark.setImageResource(R.drawable.bookmark_added)
         else bookmark.setImageResource(R.drawable.bookmark_add)
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        registerObservers()
-
-        val id = intent.getIntExtra("ID", 0)
-        mainViewModel.getBookInfo(id)
+        if (isComeFromDB) {
+            showBookmarkBook()
+            mainViewModel.getBookmarkInfo(id)
+        } else {
+            registerObservers()
+            mainViewModel.getBookInfo(id)
+        }
 
         bookmark.setOnClickListener {
-            isBookmark = !isBookmark
-            if(isBookmark) {
+            isComeFromDB = !isComeFromDB
+            if (isComeFromDB) {
                 mainViewModel.addBookmark(resBook)
                 bookmark.setImageResource(R.drawable.bookmark_added)
                 Toast.makeText(this, "Added to Bookmark!", Toast.LENGTH_SHORT).show()
-            }
-            else {
+            } else {
                 bookmark.setImageResource(R.drawable.bookmark_add)
                 Toast.makeText(this, "Removed from Bookmark!", Toast.LENGTH_SHORT).show()
             }
@@ -87,6 +90,36 @@ class BookActivity : AppCompatActivity() {
         })
 
         mainViewModel.bookInfoFailureLiveData.observe(this, Observer { isFailed ->
+            isFailed?.let {
+                Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun showBookmarkBook() {
+        mainViewModel.bookmarkSuccessLiveData.observe(this, Observer { book ->
+            book?.let {
+                resBook = it
+                book_title.text = it.name
+                author.text = it.author
+                if (it.category != null)
+                    category.text = it.category
+                else
+                    category.visibility = GONE
+                Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
+                rb.rating = it.rate.toFloat()
+                page_num.text = it.pageNumber.toString()
+                descr.text = it.descr
+
+                view_btn.setOnClickListener {
+                    val browserIntent =
+                        Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
+                    startActivity(browserIntent)
+                }
+            }
+        })
+
+        mainViewModel.bookmarkFailureLiveData.observe(this, Observer { isFailed ->
             isFailed?.let {
                 Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
             }

@@ -92,14 +92,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showBookmarkBook() {
-        mainViewModel.bookmarkSuccessLiveData.observe(this, Observer { bookList ->
+        mainViewModel.bookmarkListSuccessLiveData.observe(this, Observer { bookList ->
             Log.d("LENGTH", bookList.size.toString())
             bookList?.let {
                 bookmarkAdapter.setBooks(it)
             }
         })
 
-        mainViewModel.bookmarkFailureLiveData.observe(this, Observer { isFailed ->
+        mainViewModel.bookmarkListFailureLiveData.observe(this, Observer { isFailed ->
             isFailed?.let {
                 Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
             }
