@@ -19,12 +19,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val bookInfoSuccessLiveData = mainRepository.bookSuccessLiveData
     val bookInfoFailureLiveData = mainRepository.bookFailureLiveData
 
-    val bookmarkListSuccessLiveData = dbRepository.bookmarkListSuccessLiveData
-    val bookmarkListFailureLiveData = dbRepository.bookmarkListFailureLiveData
-
-    val bookmarkSuccessLiveData = dbRepository.bookmarkSuccessLiveData
-    val bookmarkFailureLiveData = dbRepository.bookmarkFailureLiveData
-
     fun getBooksImage() {
         viewModelScope.launch { mainRepository.getBooksImage() }
     }
@@ -33,13 +27,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch { mainRepository.getBookInfo(id) }
     }
 
-    fun getBookmarkBooks() {
-        viewModelScope.launch { dbRepository.getBook() }
-    }
+    fun getBookmarkBooks() = dbRepository.getBook()
 
-    fun getBookmarkInfo(id: Int) {
-        viewModelScope.launch { dbRepository.getBook(id) }
-    }
+    fun getBookmarkInfo(id: Int) = dbRepository.getBook(id)
 
     fun addBookmark(book: BookModel) {
         viewModelScope.launch { dbRepository.addBook(book) }

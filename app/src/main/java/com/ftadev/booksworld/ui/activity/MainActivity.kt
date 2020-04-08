@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
 
         //calling book list api
         mainViewModel.getBooksImage()
-        mainViewModel.getBookmarkBooks()
 
 //        chips_group.setOnCheckedChangeListener { chipGroup, i ->
 //            val chip: Chip? = chipGroup.findViewById(i)
@@ -92,16 +91,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showBookmarkBook() {
-        mainViewModel.bookmarkListSuccessLiveData.observe(this, Observer { bookList ->
-            Log.d("LENGTH", bookList.size.toString())
+        mainViewModel.getBookmarkBooks()?.observe(this, Observer { bookList ->
             bookList?.let {
                 bookmarkAdapter.setBooks(it)
-            }
-        })
-
-        mainViewModel.bookmarkListFailureLiveData.observe(this, Observer { isFailed ->
-            isFailed?.let {
-                Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -42,8 +42,7 @@ class BookActivity : AppCompatActivity() {
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         if (isComeFromDB) {
-            showBookmarkBook()
-            mainViewModel.getBookmarkInfo(id)
+            showBookmarkBook(id)
         } else {
             registerObservers()
             mainViewModel.getBookInfo(id)
@@ -96,8 +95,8 @@ class BookActivity : AppCompatActivity() {
         })
     }
 
-    private fun showBookmarkBook() {
-        mainViewModel.bookmarkSuccessLiveData.observe(this, Observer { book ->
+    private fun showBookmarkBook(id: Int) {
+        mainViewModel.getBookmarkInfo(id)?.observe(this, Observer { book ->
             book?.let {
                 resBook = it
                 book_title.text = it.name
@@ -116,12 +115,6 @@ class BookActivity : AppCompatActivity() {
                         Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
                     startActivity(browserIntent)
                 }
-            }
-        })
-
-        mainViewModel.bookmarkFailureLiveData.observe(this, Observer { isFailed ->
-            isFailed?.let {
-                Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -5,20 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import com.ftadev.booksworld.db.BookDao
 import com.ftadev.booksworld.db.BookDatabase
 import com.ftadev.booksworld.model.BookModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.CoroutineContext
 
-class DBRepository(application: Application) /*: CoroutineScope*/ {
+class DBRepository(application: Application) : CoroutineScope {
 
-
-    val bookmarkListSuccessLiveData = MutableLiveData<List<BookModel>>()
-    val bookmarkListFailureLiveData = MutableLiveData<Boolean>()
-
-    val bookmarkSuccessLiveData = MutableLiveData<BookModel>()
-    val bookmarkFailureLiveData = MutableLiveData<Boolean>()
-
-//    override val coroutineContext: CoroutineContext
-//        get() = Dispatchers.Main
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main
 
     private var bookDao: BookDao?
 
@@ -34,19 +29,9 @@ class DBRepository(application: Application) /*: CoroutineScope*/ {
         }
     }
 
-    suspend fun getBook() {
-        withContext(Dispatchers.IO) {
-            val response = bookDao?.getAllBooks()
-            bookmarkListSuccessLiveData.postValue(response)
-        }
-    }
+    fun getBook() = bookDao?.getAllBooks()
 
-    suspend fun getBook(id: Int) {
-        withContext(Dispatchers.IO) {
-            val response = bookDao?.getBook(id)
-            bookmarkSuccessLiveData.postValue(response)
-        }
-    }
+    fun getBook(id: Int) = bookDao?.getBook(id)
 
 
 }
