@@ -2,7 +2,6 @@ package com.ftadev.booksworld.ui.activity
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -42,9 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-//        val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.book_list_fragment, firstFragment)
-//        fragmentTransaction.commit()
+//        initialFragment()
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
@@ -65,15 +62,6 @@ class MainActivity : AppCompatActivity() {
         //calling book list api
         mainViewModel.getBooksImage()
 
-//        chips_group.setOnCheckedChangeListener { chipGroup, i ->
-//            val chip: Chip? = chipGroup.findViewById(i)
-//            if (chip != null) {
-//                if (chip.id == R.id.all_chip)
-//                    allBookClick()
-//                else
-//                    categoryBookClick()
-//            }
-//        }
     }
 
     private fun registerObservers() {
@@ -98,6 +86,11 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun initialFragment() {
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.book_list_fragment, firstFragment)
+        fragmentTransaction.commit()
+    }
 
     private fun allBookClick() {
         val fragmentTransaction = fragmentManager.beginTransaction()
