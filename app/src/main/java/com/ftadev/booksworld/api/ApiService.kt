@@ -8,9 +8,6 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("book/")
-    suspend fun getAllBooks() : Response<List<BookModel>>
-
     @GET("book/image")
     suspend fun getBookImages() : Response<List<BookImageModel>>
 
