@@ -5,8 +5,14 @@ buildscript {
     ext.coroutines_version = '1.0.1'
     ext.app_compat_version = '1.1.0'
     ext.constraint_layout_version = '2.0.0-beta4'
-    ext.glide_version = '4.8.0'
-    ext.android_material_version = '1.0.0'
+    ext.android_material_version = '1.1.0'
+    ext.junit_version = '4.12'
+    ext.test_junit_version = '1.1.1'
+    ext.espresso_core_version = '3.2.0'
+    ext.espresso_contrib_version = '3.2.0'
+    ext.espresso_intents_version = '3.2.0'
+    ext.core_testing_version = '1.1.1'
+    ext.core_ktx_version = '1.2.0'
     ext.retrofit_version = '2.6.0'
     ext.retrofit_coroutines_adapter_version = '0.9.2'
     ext.retrofit_gson_adapter_version = '2.4.0'
@@ -14,6 +20,9 @@ buildscript {
     ext.okhttp_version = '3.12.1'
     ext.lifecycle_version = '2.2.0'
     ext.room_version = '1.1.1'
+    ext.sliding_panel_version = '1.0.0'
+    ext.rating_bar_version = '1.5.0'
+    ext.picasso_version = '2.71828'
 
     repositories {
         google()
@@ -21,7 +30,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:3.6.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -34,8 +43,6 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
-
-
     }
 }
 
