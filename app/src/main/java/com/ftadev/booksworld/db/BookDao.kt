@@ -1,10 +1,6 @@
 package com.ftadev.booksworld.db
 
-import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.ftadev.booksworld.model.BookModel
 
 @Dao
@@ -16,6 +12,7 @@ interface BookDao {
     @Query("SELECT * from book ORDER BY id DESC")
     fun getAllBooks() : List<BookModel>
 
-//    @Query("DELETE FROM book")
-//    fun deleteBook(id: Int)
+    @Query("SELECT * FROM book WHERE id = :id")
+    fun getBook(id: Int): BookModel
+
 }
