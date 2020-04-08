@@ -52,6 +52,8 @@ class BookmarkAdapter(private val context: Context) : RecyclerView.Adapter<Bookm
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, BookActivity::class.java)
                 intent.putExtra("ID", book.id)
+                intent.putExtra("isComeFromDB", true)
+
                 itemView.context.startActivity(intent)
             }
         }

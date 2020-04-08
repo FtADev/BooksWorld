@@ -52,6 +52,7 @@ class BookAdapter(private val context: Context) : RecyclerView.Adapter<BookAdapt
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, BookActivity::class.java)
                 intent.putExtra("ID", book.id)
+                intent.putExtra("isComeFromDB", false)
                 itemView.context.startActivity(intent)
             }
         }
