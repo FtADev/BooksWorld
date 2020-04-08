@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
     private fun showBookmarkBook() {
         mainViewModel.getBookmarkBooks()?.observe(this, Observer { bookList ->
             bookList?.let {
+                bookmarkAdapter.clearList()
                 bookmarkAdapter.setBooks(it)
             }
         })

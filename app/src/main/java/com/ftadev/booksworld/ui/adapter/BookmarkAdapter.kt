@@ -19,10 +19,14 @@ class BookmarkAdapter(private val context: Context) : RecyclerView.Adapter<Bookm
     private var bookList: ArrayList<BookModel> = ArrayList()
 
     fun setBooks(books: List<BookModel>) {
-
         bookList.addAll(books)
         notifyDataSetChanged()
 
+    }
+
+    fun clearList() {
+        bookList.clear()
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
