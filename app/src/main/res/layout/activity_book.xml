@@ -172,6 +172,7 @@
         android:background="@drawable/bg_descr"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="60dp"
+        android:padding="10dp"
         android:scrollbars="none">
 
         <TextView
