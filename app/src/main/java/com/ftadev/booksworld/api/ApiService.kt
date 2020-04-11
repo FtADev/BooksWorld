@@ -8,9 +8,12 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("book/image")
-    suspend fun getBookImages() : Response<List<BookImageModel>>
+    @GET("book/image/{limit}/{offset}")
+    suspend fun getBookImages(@Path("offset") offset: Int, @Path("limit") limit: Int) : Response<List<BookImageModel>>
 
-    @GET("book/{id}")
+    @GET("book/info/{id}")
     suspend fun getBookInfo(@Path("id") id: Int) : Response<BookModel>
+
+    @GET("book/search/{name}")
+    suspend fun search(@Path("name") name: String) : Response<List<BookModel>>
 }
