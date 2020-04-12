@@ -13,15 +13,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val mainRepository = MainRepository()
     private var dbRepository: DBRepository = DBRepository(application)
 
-    val booksSuccessLiveData = mainRepository.booksImageSuccessLiveData
-    val booksFailureLiveData = mainRepository.booksImageFailureLiveData
-
     val bookInfoSuccessLiveData = mainRepository.bookSuccessLiveData
     val bookInfoFailureLiveData = mainRepository.bookFailureLiveData
-
-    fun getBooksImage() {
-        viewModelScope.launch { mainRepository.getBooksImage() }
-    }
 
     fun getBookInfo(id: Int) {
         viewModelScope.launch { mainRepository.getBookInfo(id) }
