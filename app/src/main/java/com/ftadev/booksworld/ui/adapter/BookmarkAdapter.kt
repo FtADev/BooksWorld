@@ -14,7 +14,7 @@ import com.ftadev.booksworld.ui.activity.BookActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_book.view.*
 
-class BookmarkAdapter(private val context: Context) : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
+class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
 
     private var bookList: ArrayList<BookModel> = ArrayList()
 
@@ -42,14 +42,14 @@ class BookmarkAdapter(private val context: Context) : RecyclerView.Adapter<Bookm
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        holder.bindList(context, bookList[position])
+        holder.bindList(bookList[position])
     }
 
     class BookViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
 
-        fun bindList(context: Context, book: BookModel) {
+        fun bindList(book: BookModel) {
             itemView.animation =
-                AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
+                AnimationUtils.loadAnimation(itemView.context, R.anim.item_animation_fall_down)
             itemView.run {
                 // We should explicitly add transform to make image's corner circular, unlike glide!
                 Picasso.get().load(book.photo).transform(RoundedTransformation(20, 0)).into(image)
