@@ -33,12 +33,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // For gradient status bar
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val window = window
-            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-        }
+        makeStatusBarGradient()
 
         setContentView(R.layout.activity_main)
 
@@ -50,11 +45,19 @@ class MainActivity : AppCompatActivity() {
         bookAdapter = BookAdapter()
         bookmarkAdapter = BookmarkAdapter(this)
 
-        initialBookList()
-        loadBooks()
-
         initialBookmarkList()
         loadBookmarks()
+
+        initialBookList()
+        loadBooks()
+    }
+
+    private fun makeStatusBarGradient() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        }
     }
 
     private fun initialBookList() {
