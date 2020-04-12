@@ -51,6 +51,7 @@ class BookmarkAdapter(private val context: Context) : RecyclerView.Adapter<Bookm
             itemView.animation =
                 AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
             itemView.run {
+                // We should explicitly add transform to make image's corner circular, unlike glide!
                 Picasso.get().load(book.photo).transform(RoundedTransformation(20, 0)).into(image)
             }
             itemView.setOnClickListener {
