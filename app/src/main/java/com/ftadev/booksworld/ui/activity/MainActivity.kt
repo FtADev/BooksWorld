@@ -3,7 +3,6 @@ package com.ftadev.booksworld.ui.activity
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,6 +13,7 @@ import com.ftadev.booksworld.ui.adapter.BookAdapter
 import com.ftadev.booksworld.ui.adapter.BookmarkAdapter
 import com.ftadev.booksworld.ui.fragment.AllBooksFragment
 import com.ftadev.booksworld.ui.fragment.CategoryBooksFragment
+import com.ftadev.booksworld.ui.viewmodel.BooksViewModel
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.appbar2.*
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private val secondFragment = CategoryBooksFragment()
 
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var booksViewModel: BooksViewModel
 
     private lateinit var bookAdapter: BookAdapter
     private lateinit var bookmarkAdapter: BookmarkAdapter
@@ -44,37 +45,28 @@ class MainActivity : AppCompatActivity() {
 //        initialFragment()
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        booksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
 
-        bookAdapter = BookAdapter(this)
+        bookAdapter = BookAdapter()
         bookmarkAdapter = BookmarkAdapter(this)
 
         //setting layout manager to recycler view and adapter
         my_books.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         my_books.adapter = bookmarkAdapter
 
+        registerObservers()
+
         rv.layoutManager = GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
         rv.adapter = bookAdapter
 
         //before calling api register live data observer
-        registerObservers()
         showBookmarkBook()
-
-        //calling book list api
-        mainViewModel.getBooksImage()
 
     }
 
     private fun registerObservers() {
-        mainViewModel.booksSuccessLiveData.observe(this, Observer { bookList ->
-            bookList?.let {
-                bookAdapter.setBooks(it)
-            }
-        })
-
-        mainViewModel.booksFailureLiveData.observe(this, Observer { isFailed ->
-            isFailed?.let {
-                Toast.makeText(this, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
-            }
+        booksViewModel.getBooks().observe(this, Observer {
+            bookAdapter.submitList(it)
         })
     }
 
