@@ -2,50 +2,58 @@ package com.ftadev.booksworld.paging
 
 import android.util.Log
 import androidx.paging.PageKeyedDataSource
+import com.ftadev.booksworld.api.RetrofitManager
 import com.ftadev.booksworld.model.BookImageModel
-import com.ftadev.booksworld.repository.MainRepository
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class BooksDataSource(private val repository: MainRepository,
-                      private val scope: CoroutineScope) : PageKeyedDataSource<Int, BookImageModel>() {
+class BooksDataSource(coroutineContext: CoroutineContext) :
+    PageKeyedDataSource<Int, BookImageModel>() {
 
-    private var supervisorJob = SupervisorJob()
-    private var retryQuery: (() -> Any)? = null // Keep reference of the last query (to be able to retry it if necessary)
+    private val apiService = RetrofitManager.apiService
+    private val job = Job()
+    private val scope = CoroutineScope(coroutineContext + job)
 
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, BookImageModel>) {
-        retryQuery = { loadInitial(params, callback) }
-        executeQuery(1, params.requestedLoadSize) {
-            callback.onResult(it, null, 2)
+    override fun loadInitial(
+        params: LoadInitialParams<Int>,
+        callback: LoadInitialCallback<Int, BookImageModel>
+    ) {
+        scope.launch {
+            try {
+                val response = apiService.getBookImages(limit = params.requestedLoadSize, offset = 0)
+                when {
+                    response.isSuccessful ->
+                        callback.onResult(response.body() ?: listOf(), null, 0)
+                }
+
+            } catch (exception: Exception) {
+                Log.e("PostsDataSource", "Failed to fetch data!")
+            }
         }
-
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, BookImageModel>) {
         val page = params.key
-        retryQuery = { loadAfter(params, callback) }
-        executeQuery(page, params.requestedLoadSize) {
-            callback.onResult(it, page + 1)
-        }
-
-    }
-
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, BookImageModel>) { }
-
-    private fun executeQuery(page: Int, perPage: Int, callback:(List<BookImageModel>) -> Unit) {
-        scope.launch(getJobErrorHandler() + supervisorJob) {
-            delay(200) // To handle user typing case
-            val users = repository.getBooksImageWithPaging(page, perPage)
-            retryQuery = null
-            callback(users)
+        scope.launch {
+            try {
+                val response =
+                    apiService.getBookImages(limit = params.requestedLoadSize, offset = page + 1)
+                when {
+                    response.isSuccessful ->
+                        callback.onResult(response.body() ?: listOf(), page + 1)
+                }
+            } catch (exception: Exception) {
+                Log.e("BooksDataSource", "Failed to fetch data!")
+            }
         }
     }
-    private fun getJobErrorHandler() = CoroutineExceptionHandler { _, e ->
-        Log.e(BooksDataSource::class.java.simpleName, "An error happened: $e")
-    }
+
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, BookImageModel>) {}
 
     override fun invalidate() {
         super.invalidate()
-        scope.cancel()
+        job.cancel()
     }
-
 }
