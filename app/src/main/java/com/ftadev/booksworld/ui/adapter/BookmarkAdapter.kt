@@ -48,18 +48,17 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
     class BookViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
 
         fun bindList(book: BookModel) {
-            itemView.animation =
-                AnimationUtils.loadAnimation(itemView.context, R.anim.item_animation_fall_down)
             itemView.run {
+                animation =
+                    AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
                 // We should explicitly add transform to make image's corner circular, unlike glide!
                 Picasso.get().load(book.photo).transform(RoundedTransformation(20, 0)).into(image)
-            }
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, BookActivity::class.java)
-                intent.putExtra("ID", book.id)
-                intent.putExtra("isComeFromDB", true)
-
-                itemView.context.startActivity(intent)
+                setOnClickListener {
+                    val intent = Intent(context, BookActivity::class.java)
+                    intent.putExtra("ID", book.id)
+                    intent.putExtra("isComeFromDB", true)
+                    context.startActivity(intent)
+                }
             }
         }
 
