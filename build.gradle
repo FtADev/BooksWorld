@@ -23,9 +23,12 @@ buildscript {
     ext.sliding_panel_version = '1.0.0'
     ext.rating_bar_version = '1.5.0'
     ext.picasso_version = '2.71828'
+    ext.glide_version = '4.11.0'
+    ext.glide_compiler_version = '4.11.0'
     ext.paging_version = '1.0.1'
 
     repositories {
+        mavenCentral()
         google()
         jcenter()
 
