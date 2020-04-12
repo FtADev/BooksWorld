@@ -1,6 +1,5 @@
 package com.ftadev.booksworld.ui.adapter
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +20,6 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
     fun setBooks(books: List<BookModel>) {
         bookList.addAll(books)
         notifyDataSetChanged()
-
     }
 
     fun clearList() {
@@ -29,17 +27,10 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder =
+        BookViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_book, parent, false))
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_book, parent, false)
-
-        return BookViewHolder(view)
-    }
-
-    override fun getItemCount(): Int {
-
-        return bookList.size
-    }
+    override fun getItemCount(): Int = bookList.size
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.bindList(bookList[position])
@@ -61,7 +52,5 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
                 }
             }
         }
-
     }
-
 }
