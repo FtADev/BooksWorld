@@ -50,27 +50,31 @@ class MainActivity : AppCompatActivity() {
         bookAdapter = BookAdapter()
         bookmarkAdapter = BookmarkAdapter(this)
 
-        //setting layout manager to recycler view and adapter
-        my_books.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        my_books.adapter = bookmarkAdapter
+        initialBookList()
+        loadBooks()
 
-        registerObservers()
+        initialBookmarkList()
+        loadBookmarks()
+    }
 
+    private fun initialBookList() {
         rv.layoutManager = GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
         rv.adapter = bookAdapter
 
-        //before calling api register live data observer
-        showBookmarkBook()
-
     }
 
-    private fun registerObservers() {
+    private fun initialBookmarkList() {
+        my_books.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        my_books.adapter = bookmarkAdapter
+    }
+
+    private fun loadBooks() {
         booksViewModel.getBooks().observe(this, Observer {
             bookAdapter.submitList(it)
         })
     }
 
-    private fun showBookmarkBook() {
+    private fun loadBookmarks() {
         mainViewModel.getBookmarkBooks()?.observe(this, Observer { bookList ->
             bookList?.let {
                 bookmarkAdapter.clearList()
