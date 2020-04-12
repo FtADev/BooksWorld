@@ -14,6 +14,7 @@ class BooksViewModel : ViewModel() {
 
     init {
         val config = PagedList.Config.Builder()
+            .setInitialLoadSizeHint(10)
             .setPageSize(10)
             .setEnablePlaceholders(false)
             .build()
