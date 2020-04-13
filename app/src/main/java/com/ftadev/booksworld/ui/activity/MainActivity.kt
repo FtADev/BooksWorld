@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         booksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
 
         bookAdapter = BookAdapter()
-        bookmarkAdapter = BookmarkAdapter(this)
+        bookmarkAdapter = BookmarkAdapter()
 
         initialBookmarkList()
         loadBookmarks()
