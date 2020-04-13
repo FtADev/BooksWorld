@@ -6,7 +6,7 @@ An android app that get books from [BooksWorld-API](https://github.com/FtADev/Bo
 
 * **Networking:** Retrofit
 * **Multi Threading:** Coroutines
-* **Image Loading:** Picasso
+* **Image Loading:** Picasso, Glide (Use both for comparing them!)
 * **Database:** RoomDB
 
 ## Architecture
