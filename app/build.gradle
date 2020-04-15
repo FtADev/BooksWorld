@@ -86,4 +86,8 @@ dependencies {
     // Paging
     implementation "android.arch.paging:runtime:$paging_version"
 
+    // Navigation
+    implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
+
 }
