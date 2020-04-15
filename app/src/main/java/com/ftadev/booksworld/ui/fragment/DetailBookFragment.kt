@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.ftadev.booksworld.R
 
-class CategoryBooksFragment : Fragment() {
+class DetailBookFragment : Fragment() {
     lateinit var textView:TextView
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -16,7 +16,7 @@ class CategoryBooksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category_book, container, false)
+        return inflater.inflate(R.layout.fragment_book_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
