@@ -17,4 +17,5 @@ An android app that get books from [BooksWorld-API](https://github.com/FtADev/Bo
 
 * **Live Data**
 * **View Model**
+* **Navigation**
 * **Paging**
