@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 import com.ftadev.booksworld.R
 import com.ftadev.booksworld.model.BookImageModel
 import com.ftadev.booksworld.paging.DiffUtilCallBack
-import com.ftadev.booksworld.ui.activity.BookActivity
 import kotlinx.android.synthetic.main.card_book.view.*
 
 class BookAdapter(var itemClickListener: ((BookImageModel) -> Unit)? = null) :

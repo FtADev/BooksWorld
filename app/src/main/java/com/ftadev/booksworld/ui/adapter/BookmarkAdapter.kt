@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ftadev.booksworld.R
 import com.ftadev.booksworld.model.BookModel
 import com.ftadev.booksworld.ui.RoundedTransformation
-import com.ftadev.booksworld.ui.activity.BookActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_book.view.*
 
@@ -45,10 +44,10 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
                 // We should explicitly add transform to make image's corner circular, unlike glide!
                 Picasso.get().load(book.photo).transform(RoundedTransformation(20, 0)).into(image)
                 setOnClickListener {
-                    val intent = Intent(context, BookActivity::class.java)
-                    intent.putExtra("ID", book.id)
-                    intent.putExtra("isComeFromDB", true)
-                    context.startActivity(intent)
+//                    val intent = Intent(context, BookActivity::class.java)
+//                    intent.putExtra("ID", book.id)
+//                    intent.putExtra("isComeFromDB", true)
+//                    context.startActivity(intent)
                 }
             }
         }
