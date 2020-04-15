@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
 import com.ftadev.booksworld.R
+import kotlinx.android.synthetic.main.fragment_book_detail.*
 
 class DetailBookFragment : Fragment() {
     lateinit var textView:TextView
@@ -22,5 +24,13 @@ class DetailBookFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        back.setOnClickListener {
+            findNavController(it).popBackStack()
+        }
     }
 }
