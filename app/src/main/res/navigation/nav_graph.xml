@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.ftadev.booksworld.ui.fragment.MainFragment"
+        android:label="Main Fragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/actionBookDetail"
+            app:destination="@id/bookDetailFragment" />
+        <action
+            android:id="@+id/actionAllBooks"
+            app:destination="@id/allBooksFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookDetailFragment"
+        android:name="com.ftadev.booksworld.ui.fragment.DetailBookFragment"
+        android:label="Book Detail"
+        tools:layout="@layout/fragment_book_detail">
+    </fragment>
+
+    <fragment
+        android:id="@+id/allBooksFragment"
+        android:name="com.ftadev.booksworld.ui.fragment.AllBooksFragment"
+        android:label="AllBooksFragment"
+        tools:layout="@layout/fragment_all_book">
+        <action
+            android:id="@+id/actionAllBookDetail"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
+
+
+</navigation>
