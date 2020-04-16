@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.ftadev.booksworld.R
 import com.ftadev.booksworld.model.BookModel
 import com.ftadev.booksworld.ui.RoundedTransformation
@@ -21,6 +22,8 @@ import kotlinx.android.synthetic.main.fragment_book_detail.*
 class BookDetailFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var resBook: BookModel
+
+    private val args by navArgs<BookDetailFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +36,6 @@ class BookDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val id = 1
         var isComeFromDB = false
 
         if (isComeFromDB) bookmark.setImageResource(R.drawable.bookmark_added)
@@ -42,10 +44,10 @@ class BookDetailFragment : Fragment() {
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         if (isComeFromDB) {
-            showBookmarkBook(id)
+            showBookmarkBook(args.bookId)
         } else {
             registerObservers()
-            mainViewModel.getBookInfo(id)
+            mainViewModel.getBookInfo(args.bookId)
         }
 
         bookmark.setOnClickListener {

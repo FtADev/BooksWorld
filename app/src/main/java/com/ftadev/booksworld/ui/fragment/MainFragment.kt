@@ -54,9 +54,8 @@ class MainFragment : Fragment() {
         rv.layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         rv.adapter = bookAdapter
         bookAdapter.itemClickListener = {
-            findNavController().navigate(
-                R.id.actionBookDetail
-            )
+            val action = MainFragmentDirections.actionBookDetail(2)
+            findNavController().navigate(action)
         }
     }
 

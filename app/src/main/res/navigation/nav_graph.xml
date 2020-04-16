@@ -21,9 +21,13 @@
 
     <fragment
         android:id="@+id/bookDetailFragment"
-        android:name="com.ftadev.booksworld.ui.fragment.DetailBookFragment"
+        android:name="com.ftadev.booksworld.ui.fragment.BookDetailFragment"
         android:label="Book Detail"
         tools:layout="@layout/fragment_book_detail">
+
+        <argument
+            android:name="bookId"
+            app:argType="integer" />
     </fragment>
 
     <fragment
