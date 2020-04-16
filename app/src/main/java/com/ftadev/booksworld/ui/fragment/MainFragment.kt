@@ -53,10 +53,6 @@ class MainFragment : Fragment() {
     private fun initialBookList() {
         rv.layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
         rv.adapter = bookAdapter
-        bookAdapter.itemClickListener = {
-            val action = MainFragmentDirections.actionBookDetail(2)
-            findNavController().navigate(action)
-        }
     }
 
     private fun initialBookmarkList() {
