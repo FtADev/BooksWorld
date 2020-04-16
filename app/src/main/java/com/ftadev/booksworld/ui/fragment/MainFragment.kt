@@ -8,19 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ftadev.booksworld.R
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ftadev.booksworld.ui.adapter.BookAdapter
 import com.ftadev.booksworld.ui.adapter.BookmarkAdapter
-import com.ftadev.booksworld.ui.viewmodel.BooksViewModel
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.appbar2.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
-    private lateinit var booksViewModel: BooksViewModel
 
     private lateinit var bookAdapter: BookAdapter
     private lateinit var bookmarkAdapter: BookmarkAdapter
@@ -37,7 +34,6 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        booksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
 
         bookAdapter = BookAdapter()
         bookmarkAdapter = BookmarkAdapter()
@@ -61,7 +57,7 @@ class MainFragment : Fragment() {
     }
 
     private fun loadBooks() {
-        booksViewModel.getBooks().observe(viewLifecycleOwner, Observer {
+        mainViewModel.getBooks().observe(viewLifecycleOwner, Observer {
             bookAdapter.submitList(it)
         })
     }
