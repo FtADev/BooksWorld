@@ -65,8 +65,7 @@ class MainFragment : Fragment() {
     private fun loadBookmarks() {
         mainViewModel.getBookmarkBooks()?.observe(viewLifecycleOwner, Observer { bookList ->
             bookList?.let {
-                bookmarkAdapter.clearList()
-                bookmarkAdapter.setBooks(it)
+                bookmarkAdapter.submitList(it)
             }
         })
     }
