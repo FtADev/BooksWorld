@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.ftadev.booksworld.R
+import com.ftadev.booksworld.model.BookImageModel
 import com.ftadev.booksworld.model.BookModel
 import com.ftadev.booksworld.ui.RoundedTransformation
 import com.squareup.picasso.Picasso
@@ -14,9 +15,9 @@ import kotlinx.android.synthetic.main.card_book.view.*
 
 class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
 
-    private var bookList: ArrayList<BookModel> = ArrayList()
+    private var bookList: ArrayList<BookImageModel> = ArrayList()
 
-    fun setBooks(books: List<BookModel>) {
+    fun setBooks(books: List<BookImageModel>) {
         bookList.addAll(books)
         notifyDataSetChanged()
     }
@@ -37,7 +38,7 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookViewHolder>() {
 
     class BookViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
 
-        fun bindList(book: BookModel) {
+        fun bindList(book: BookImageModel) {
             itemView.run {
                 animation =
                     AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
