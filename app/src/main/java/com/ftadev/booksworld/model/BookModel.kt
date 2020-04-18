@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "book")
 data class BookModel(
     @PrimaryKey
+    val idBook: Int?,
     val id: Int,
     val author: String,
     val category: String?,
