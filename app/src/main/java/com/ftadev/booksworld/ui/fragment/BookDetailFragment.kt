@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ftadev.booksworld.R
@@ -41,7 +41,7 @@ class BookDetailFragment : Fragment() {
         if (isComeFromDB) bookmark.setImageResource(R.drawable.bookmark_added)
         else bookmark.setImageResource(R.drawable.bookmark_add)
 
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         if (isComeFromDB) {
             showBookmarkBook(args.bookId)
