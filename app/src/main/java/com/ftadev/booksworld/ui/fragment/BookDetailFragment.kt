@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ftadev.booksworld.R
+import com.ftadev.booksworld.databinding.FragmentBookDetailBinding
 import com.ftadev.booksworld.model.BookModel
 import com.ftadev.booksworld.ui.RoundedTransformation
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
@@ -20,6 +21,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_book_detail.*
 
 class BookDetailFragment : Fragment() {
+    private lateinit var binding: FragmentBookDetailBinding
     private lateinit var mainViewModel: MainViewModel
     private lateinit var resBook: BookModel
 
@@ -30,7 +32,8 @@ class BookDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_book_detail, container, false)
+        binding = FragmentBookDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -38,8 +41,8 @@ class BookDetailFragment : Fragment() {
 
         var isComeFromDB = false
 
-        if (isComeFromDB) bookmark.setImageResource(R.drawable.bookmark_added)
-        else bookmark.setImageResource(R.drawable.bookmark_add)
+        if (isComeFromDB) binding.bookmark.setImageResource(R.drawable.bookmark_added)
+        else binding.bookmark.setImageResource(R.drawable.bookmark_add)
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
@@ -54,10 +57,10 @@ class BookDetailFragment : Fragment() {
             isComeFromDB = !isComeFromDB
             if (isComeFromDB) {
                 mainViewModel.addBookmark(resBook)
-                bookmark.setImageResource(R.drawable.bookmark_added)
+                binding.bookmark.setImageResource(R.drawable.bookmark_added)
                 Toast.makeText(context, "Added to Bookmark!", Toast.LENGTH_SHORT).show()
             } else {
-                bookmark.setImageResource(R.drawable.bookmark_add)
+                binding.bookmark.setImageResource(R.drawable.bookmark_add)
                 Toast.makeText(context, "Removed from Bookmark!", Toast.LENGTH_SHORT).show()
             }
         }
@@ -71,22 +74,24 @@ class BookDetailFragment : Fragment() {
     private fun registerObservers() {
         mainViewModel.bookInfoSuccessLiveData.observe(viewLifecycleOwner, Observer { book ->
             book?.let {
-                resBook = it
-                book_title.text = it.name
-                author.text = it.author
-                if (it.category != null)
-                    category.text = it.category
-                else
-                    category.visibility = View.GONE
-                Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
-                rb.rating = it.rate.toFloat()
-                page_num.text = it.pageNumber.toString()
-                descr.text = it.descr
+                binding.apply {
+                    resBook = it
+                    book_title.text = it.name
+                    author.text = it.author
+                    if (it.category != null)
+                        category.text = it.category
+                    else
+                        category.visibility = View.GONE
+                    Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
+                    rb.rating = it.rate.toFloat()
+                    page_num.text = it.pageNumber.toString()
+                    descr.text = it.descr
 
-                view_btn.setOnClickListener {
-                    val browserIntent =
-                        Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
-                    startActivity(browserIntent)
+                    view_btn.setOnClickListener {
+                        val browserIntent =
+                            Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
+                        startActivity(browserIntent)
+                    }
                 }
             }
         })
@@ -101,22 +106,24 @@ class BookDetailFragment : Fragment() {
     private fun showBookmarkBook(id: Int) {
         mainViewModel.getBookmarkInfo(id)?.observe(viewLifecycleOwner, Observer { book ->
             book?.let {
-                resBook = it
-                book_title.text = it.name
-                author.text = it.author
-                if (it.category != null)
-                    category.text = it.category
-                else
-                    category.visibility = View.GONE
-                Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
-                rb.rating = it.rate.toFloat()
-                page_num.text = it.pageNumber.toString()
-                descr.text = it.descr
+                binding.apply {
+                    resBook = it
+                    book_title.text = it.name
+                    author.text = it.author
+                    if (it.category != null)
+                        category.text = it.category
+                    else
+                        category.visibility = View.GONE
+                    Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
+                    rb.rating = it.rate.toFloat()
+                    page_num.text = it.pageNumber.toString()
+                    descr.text = it.descr
 
-                view_btn.setOnClickListener {
-                    val browserIntent =
-                        Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
-                    startActivity(browserIntent)
+                    view_btn.setOnClickListener {
+                        val browserIntent =
+                            Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
+                        startActivity(browserIntent)
+                    }
                 }
             }
         })
