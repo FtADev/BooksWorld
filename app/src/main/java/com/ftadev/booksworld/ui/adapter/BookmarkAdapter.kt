@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ftadev.booksworld.R
+import com.ftadev.booksworld.databinding.CardBookBinding
 import com.ftadev.booksworld.model.BookImageModel
 import com.ftadev.booksworld.paging.DiffUtilCallBack
 import com.ftadev.booksworld.ui.RoundedTransformation
@@ -17,13 +17,16 @@ import com.squareup.picasso.Picasso
 
 class BookmarkAdapter : ListAdapter<BookImageModel, BookmarkAdapter.BookViewHolder>(DiffUtilCallBack()) {
 
-    class BookViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
-        val photo: ImageView = parent.findViewById(R.id.image)
+    class BookViewHolder(binding: CardBookBinding) : RecyclerView.ViewHolder(binding.root) {
+        val photo = binding.image
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_book, parent, false)
-        return BookViewHolder(view)
+        val binding = CardBookBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false)
+        return BookViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {

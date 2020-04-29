@@ -10,19 +10,23 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ftadev.booksworld.R
+import com.ftadev.booksworld.databinding.CardBookBinding
 import com.ftadev.booksworld.model.BookImageModel
 import com.ftadev.booksworld.paging.DiffUtilCallBack
 import com.ftadev.booksworld.ui.fragment.MainFragmentDirections
 
 class BookAdapter : PagedListAdapter<BookImageModel, BookAdapter.BookViewHolder>(DiffUtilCallBack()) {
 
-    class BookViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
-        val photo: ImageView = parent.findViewById(R.id.image)
+    class BookViewHolder(binding: CardBookBinding) : RecyclerView.ViewHolder(binding.root) {
+        val photo = binding.image
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_book, parent, false)
-        return BookViewHolder(view)
+        val binding = CardBookBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false)
+        return BookViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
