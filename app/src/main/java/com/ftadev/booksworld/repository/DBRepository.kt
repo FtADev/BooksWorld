@@ -26,6 +26,9 @@ class DBRepository(application: Application) : CoroutineScope {
         launch  { addBookBG(book) }
     }
 
+    fun isMarked(bookId: Int) =
+        bookDao?.isMarked(bookId)
+
     private suspend fun addBookBG(book: BookModel) {
         withContext(Dispatchers.IO) {
             bookDao?.addBook(book)

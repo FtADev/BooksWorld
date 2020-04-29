@@ -34,6 +34,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         booksLiveData = initializedPagedListBuilder(config).build()
     }
 
+    fun isMarked(id: Int): LiveData<Boolean>? = dbRepository.isMarked(id)
 
     fun getBookInfo(id: Int) {
         viewModelScope.launch { mainRepository.getBookInfo(id) }

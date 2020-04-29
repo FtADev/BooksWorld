@@ -24,6 +24,7 @@ class BookDetailFragment : Fragment() {
     private lateinit var binding: FragmentBookDetailBinding
     private lateinit var mainViewModel: MainViewModel
     private lateinit var resBook: BookModel
+    private var isMarked = false
 
     private val args by navArgs<BookDetailFragmentArgs>()
 
@@ -39,14 +40,22 @@ class BookDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        var isComeFromDB = false
-
-        if (isComeFromDB) binding.bookmark.setImageResource(R.drawable.bookmark_added)
-        else binding.bookmark.setImageResource(R.drawable.bookmark_add)
-
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        if (isComeFromDB) {
+        isMarked(args.bookId)
+
+        back.setOnClickListener {
+            findNavController(it).popBackStack()
+        }
+    }
+
+    private fun isMarked(id: Int) = mainViewModel.isMarked(id)?.observe(viewLifecycleOwner, Observer {
+        isMarked = it
+
+        if (isMarked) binding.bookmark.setImageResource(R.drawable.bookmark_added)
+        else binding.bookmark.setImageResource(R.drawable.bookmark_add)
+
+        if (isMarked) {
             showBookmarkBook(args.bookId)
         } else {
             registerObservers()
@@ -54,8 +63,7 @@ class BookDetailFragment : Fragment() {
         }
 
         bookmark.setOnClickListener {
-            isComeFromDB = !isComeFromDB
-            if (isComeFromDB) {
+            if (!isMarked) {
                 mainViewModel.addBookmark(resBook)
                 binding.bookmark.setImageResource(R.drawable.bookmark_added)
                 Toast.makeText(context, "Added to Bookmark!", Toast.LENGTH_SHORT).show()
@@ -64,12 +72,7 @@ class BookDetailFragment : Fragment() {
                 Toast.makeText(context, "Removed from Bookmark!", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-        back.setOnClickListener {
-            findNavController(it).popBackStack()
-        }
-    }
+    })
 
     private fun registerObservers() {
         mainViewModel.bookInfoSuccessLiveData.observe(viewLifecycleOwner, Observer { book ->
