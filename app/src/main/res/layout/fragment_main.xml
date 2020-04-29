@@ -18,12 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:orientation="vertical"
-        app:nonSlidingView="@id/appbar2"
+        app:nonSlidingView="@id/my_book_layout"
         app:slidingView="@id/rv_layout"
         app:dragView="@id/dash">
 
         <include
-            android:id="@+id/appbar2"
+            android:id="@+id/my_book_layout"
             layout="@layout/appbar2" />
 
         <RelativeLayout
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_rv"
-            android:layout_below="@id/appbar2">
+            android:layout_below="@id/my_book_layout">
 
             <RelativeLayout
                 android:id="@+id/dash"
