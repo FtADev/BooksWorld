@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.ftadev.booksworld.R
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ftadev.booksworld.databinding.FragmentMainBinding
 import com.ftadev.booksworld.ui.adapter.BookAdapter
 import com.ftadev.booksworld.ui.adapter.BookmarkAdapter
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
@@ -17,8 +17,8 @@ import kotlinx.android.synthetic.main.appbar2.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
+    private lateinit var binding: FragmentMainBinding
     private lateinit var mainViewModel: MainViewModel
-
     private lateinit var bookAdapter: BookAdapter
     private lateinit var bookmarkAdapter: BookmarkAdapter
 
@@ -27,7 +27,8 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -47,13 +48,13 @@ class MainFragment : Fragment() {
     }
 
     private fun initialBookList() {
-        rv.layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
-        rv.adapter = bookAdapter
+        binding.rv.layoutManager = GridLayoutManager(context, 2, LinearLayoutManager.VERTICAL, false)
+        binding.rv.adapter = bookAdapter
     }
 
     private fun initialBookmarkList() {
-        my_books.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        my_books.adapter = bookmarkAdapter
+        binding.myBookLayout.myBooks.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.myBookLayout.myBooks.adapter = bookmarkAdapter
     }
 
     private fun loadBooks() {
