@@ -30,13 +30,13 @@ class MainRepository {
             }
 
         } catch (e: UnknownHostException) {
-            Log.e(TAG, e.message)
+            Log.e(TAG, "${e.message}")
             bookFailureLiveData.postValue(true)
         } catch (e: SocketTimeoutException) {
-            Log.e(TAG, e.message)
+            Log.e(TAG, "${e.message}")
             bookFailureLiveData.postValue(true)
         } catch (e: Exception) {
-            Log.e(TAG, e.message)
+            Log.e(TAG, "${e.message}")
             bookFailureLiveData.postValue(true)
         }
     }
