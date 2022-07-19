@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -89,9 +90,10 @@ dependencies {
 //    implementation "com.psoffritti.slidingpanel:core:1.0.0"
 
     // Room
-    implementation "android.arch.persistence.room:runtime:1.1.1"
-    implementation "android.arch.persistence.room:rxjava2:1.1.1"
-//    kapt "android.arch.persistence.room:compiler:1.1.1"
+    def room_version = "2.4.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    kapt "androidx.room:room-compiler:2.4.2"
 
     // Paging
     implementation "androidx.paging:paging-runtime:3.1.1"
