@@ -1,12 +1,12 @@
 # BooksWorld
 
-An android app that get books from [BooksWorld-API](https://github.com/FtADev/BooksWorld-API) and show their information and could persist each one on local database to read them offline
+An android application that gets list of books from [BooksWorld-API](https://github.com/FtADev/BooksWorld-API) and shows their information and could persist each of them on local database to access them offline.
 
 ## Third Party Libraries
 
 * **Networking:** Retrofit
 * **Multi Threading:** Coroutines
-* **Image Loading:** Picasso, Glide (Use both for comparing them!)
+* **Image Loading:** Picasso, Glide (Use both of them for comparing!)
 * **Database:** RoomDB
 
 ## Architecture
