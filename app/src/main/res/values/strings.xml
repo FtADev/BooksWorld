@@ -16,4 +16,8 @@
     <string name="children">Children</string>
     <string name="science_f">ScienceFiction</string>
     <string name="textbooks">TextBooks</string>
+    <string name="my_books">My Books</string>
+    <string name="sample">Hellooooo ALL Boook</string>
+    <string name="number_of_pages">Number of pages:</string>
+    <string name="view_book">View Book</string>
 </resources>

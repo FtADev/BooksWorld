@@ -13,8 +13,6 @@ import com.ftadev.booksworld.databinding.FragmentMainBinding
 import com.ftadev.booksworld.ui.adapter.BookAdapter
 import com.ftadev.booksworld.ui.adapter.BookmarkAdapter
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.appbar2.*
-import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding

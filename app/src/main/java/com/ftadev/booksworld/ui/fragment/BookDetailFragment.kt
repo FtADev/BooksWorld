@@ -18,7 +18,6 @@ import com.ftadev.booksworld.model.BookModel
 import com.ftadev.booksworld.ui.RoundedTransformation
 import com.ftadev.booksworld.ui.viewmodel.MainViewModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_book_detail.*
 
 class BookDetailFragment : Fragment() {
     private lateinit var binding: FragmentBookDetailBinding
@@ -44,7 +43,7 @@ class BookDetailFragment : Fragment() {
 
         isMarked(args.bookId)
 
-        back.setOnClickListener {
+        binding.back.setOnClickListener {
             findNavController(it).popBackStack()
         }
     }
@@ -62,7 +61,7 @@ class BookDetailFragment : Fragment() {
             mainViewModel.getBookInfo(args.bookId)
         }
 
-        bookmark.setOnClickListener {
+        binding.bookmark.setOnClickListener {
             if (!isMarked) {
                 mainViewModel.addBookmark(resBook)
                 binding.bookmark.setImageResource(R.drawable.bookmark_added)
@@ -79,18 +78,18 @@ class BookDetailFragment : Fragment() {
             book?.let {
                 binding.apply {
                     resBook = it
-                    book_title.text = it.name
+                    bookTitle.text = it.name
                     author.text = it.author
                     if (it.category != null)
                         category.text = it.category
                     else
                         category.visibility = View.GONE
                     Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
-                    rb.rating = it.rate.toFloat()
-                    page_num.text = it.pageNumber.toString()
+//                    rb.rating = it.rate.toFloat()
+                    pageNum.text = it.pageNumber.toString()
                     descr.text = it.descr
 
-                    view_btn.setOnClickListener {
+                    viewBtn.setOnClickListener {
                         val browserIntent =
                             Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
                         startActivity(browserIntent)
@@ -111,18 +110,18 @@ class BookDetailFragment : Fragment() {
             book?.let {
                 binding.apply {
                     resBook = it
-                    book_title.text = it.name
+                    bookTitle.text = it.name
                     author.text = it.author
                     if (it.category != null)
                         category.text = it.category
                     else
                         category.visibility = View.GONE
                     Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
-                    rb.rating = it.rate.toFloat()
-                    page_num.text = it.pageNumber.toString()
+//                    rb.rating = it.rate.toFloat()
+                    pageNum.text = it.pageNumber.toString()
                     descr.text = it.descr
 
-                    view_btn.setOnClickListener {
+                    viewBtn.setOnClickListener {
                         val browserIntent =
                             Intent(Intent.ACTION_VIEW, Uri.parse(book.link))
                         startActivity(browserIntent)
