@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.activity.MainActivity"
-    android:background="@drawable/bg_appbar">
+    android:background="@drawable/bg_appbar"
+    tools:context=".ui.activity.MainActivity">
 
     <!--    Icons From https://icons8.com/  -->
 
-    <include android:id="@+id/appbar"
+    <include
+        android:id="@+id/appbar"
         layout="@layout/appbar" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="3"
         android:layout_below="@id/appbar"
         android:baselineAligned="false"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_height="wrap_content">
 
             <include
                 android:id="@+id/my_book_layout"
@@ -36,8 +35,7 @@
             android:id="@+id/rv_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_rv"
-            android:layout_weight="2">
+            android:background="@drawable/bg_rv">
 
             <!--            <RelativeLayout-->
             <!--                android:id="@+id/dash"-->
@@ -55,13 +53,12 @@
             <!--            </RelativeLayout>-->
 
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="36dp"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:paddingHorizontal="36dp" />
 
 
         </RelativeLayout>
@@ -69,19 +66,17 @@
     </LinearLayout>
 
 
-<!--    <com.psoffritti.slidingpanel.SlidingPanel-->
-<!--        android:id="@+id/sliding_panel"-->
-<!--        android:layout_below="@id/appbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:orientation="vertical"-->
-<!--        app:nonSlidingView="@id/my_book_layout"-->
-<!--        app:slidingView="@id/rv_layout"-->
-<!--        app:dragView="@id/dash">-->
+    <!--    <com.psoffritti.slidingpanel.SlidingPanel-->
+    <!--        android:id="@+id/sliding_panel"-->
+    <!--        android:layout_below="@id/appbar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:orientation="vertical"-->
+    <!--        app:nonSlidingView="@id/my_book_layout"-->
+    <!--        app:slidingView="@id/rv_layout"-->
+    <!--        app:dragView="@id/dash">-->
 
-<!--    </com.psoffritti.slidingpanel.SlidingPanel>-->
-
-
+    <!--    </com.psoffritti.slidingpanel.SlidingPanel>-->
 
 
     <FrameLayout
@@ -90,7 +85,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!--No Need-->
     <!--    <FrameLayout-->
