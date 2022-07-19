@@ -21,7 +21,9 @@ An android app that get books from [BooksWorld-API](https://github.com/FtADev/Bo
 * **Paging**
 ## Screenshots
 
-![demo 1](https://github.com/FtADev/BooksWorld/blob/master/1.jpg) 
+<img src="1.png" alt="drawing" width="300"/>
 
-![demo 2](https://github.com/FtADev/BooksWorld/blob/master/2.jpg) 
+<img src="2.png" alt="drawing" width="300"/>
+
+<img src="3.png" alt="drawing" width="300"/>
 
