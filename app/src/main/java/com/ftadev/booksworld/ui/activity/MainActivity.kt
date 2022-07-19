@@ -3,6 +3,7 @@ package com.ftadev.booksworld.ui.activity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.ftadev.booksworld.R
 import androidx.navigation.Navigation.findNavController
 
@@ -22,8 +23,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun makeStatusBarGradient() {
         val window = window
-        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        val background = ContextCompat.getDrawable(this, R.drawable.bg_appbar)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(this,android.R.color.transparent)
+        window.navigationBarColor = ContextCompat.getColor(this,android.R.color.transparent)
+        window.setBackgroundDrawable(background)
     }
 
 }
