@@ -94,7 +94,7 @@ dependencies {
 //    kapt "android.arch.persistence.room:compiler:1.1.1"
 
     // Paging
-    implementation "android.arch.paging:runtime:1.0.1"
+    implementation "androidx.paging:paging-runtime:3.1.1"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.0"
