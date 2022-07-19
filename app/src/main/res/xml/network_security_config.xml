@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">Your IP Without Port</domain>
+        <domain includeSubdomains="true">Your IP Without Port and http</domain>
     </domain-config>
 </network-security-config>
 
