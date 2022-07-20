@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,17 +55,17 @@ class MainFragment : Fragment() {
     }
 
     private fun loadBooks() {
-        mainViewModel.getBooks().observe(viewLifecycleOwner, Observer {
+        mainViewModel.getBooks().observe(viewLifecycleOwner) {
             bookAdapter.submitList(it)
-        })
+        }
     }
 
     private fun loadBookmarks() {
-        mainViewModel.getBookmarkBooks()?.observe(viewLifecycleOwner, Observer { bookList ->
+        mainViewModel.getBookmarkBooks()?.observe(viewLifecycleOwner) { bookList ->
             bookList?.let {
                 bookmarkAdapter.submitList(it)
             }
-        })
+        }
     }
 
 }

@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -48,7 +47,7 @@ class BookDetailFragment : Fragment() {
         }
     }
 
-    private fun isMarked(id: Int) = mainViewModel.isMarked(id)?.observe(viewLifecycleOwner, Observer {
+    private fun isMarked(id: Int) = mainViewModel.isMarked(id)?.observe(viewLifecycleOwner) {
         isMarked = it
 
         if (isMarked) binding.bookmark.setImageResource(R.drawable.bookmark_added)
@@ -71,10 +70,10 @@ class BookDetailFragment : Fragment() {
                 Toast.makeText(context, "Removed from Bookmark!", Toast.LENGTH_SHORT).show()
             }
         }
-    })
+    }
 
     private fun registerObservers() {
-        mainViewModel.bookInfoSuccessLiveData.observe(viewLifecycleOwner, Observer { book ->
+        mainViewModel.bookInfoSuccessLiveData.observe(viewLifecycleOwner) { book ->
             book?.let {
                 binding.apply {
                     resBook = it
@@ -84,7 +83,7 @@ class BookDetailFragment : Fragment() {
                         category.text = it.category
                     else
                         category.visibility = View.GONE
-                    Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
+                    Picasso.get().load(it.photo).transform(RoundedTransformation(20, 0)).into(photo)
 //                    rb.rating = it.rate.toFloat()
                     pageNum.text = it.pageNumber.toString()
                     descr.text = it.descr
@@ -96,17 +95,17 @@ class BookDetailFragment : Fragment() {
                     }
                 }
             }
-        })
+        }
 
-        mainViewModel.bookInfoFailureLiveData.observe(viewLifecycleOwner, Observer { isFailed ->
+        mainViewModel.bookInfoFailureLiveData.observe(viewLifecycleOwner) { isFailed ->
             isFailed?.let {
                 Toast.makeText(context, "Oops! something went wrong", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
     }
 
     private fun showBookmarkBook(id: Int) {
-        mainViewModel.getBookmarkInfo(id)?.observe(viewLifecycleOwner, Observer { book ->
+        mainViewModel.getBookmarkInfo(id)?.observe(viewLifecycleOwner) { book ->
             book?.let {
                 binding.apply {
                     resBook = it
@@ -116,7 +115,7 @@ class BookDetailFragment : Fragment() {
                         category.text = it.category
                     else
                         category.visibility = View.GONE
-                    Picasso.get().load(it.photo).transform(RoundedTransformation(20,0)).into(photo)
+                    Picasso.get().load(it.photo).transform(RoundedTransformation(20, 0)).into(photo)
 //                    rb.rating = it.rate.toFloat()
                     pageNum.text = it.pageNumber.toString()
                     descr.text = it.descr
@@ -128,6 +127,6 @@ class BookDetailFragment : Fragment() {
                     }
                 }
             }
-        })
+        }
     }
 }
