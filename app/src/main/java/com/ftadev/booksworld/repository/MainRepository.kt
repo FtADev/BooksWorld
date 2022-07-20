@@ -42,6 +42,6 @@ class MainRepository {
     }
 
     companion object {
-        val TAG = MainRepository::class.java.simpleName
+        val TAG: String = MainRepository::class.java.simpleName
     }
 }
