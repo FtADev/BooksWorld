@@ -1,59 +1,46 @@
 package com.ftadev.booksworld.paging
 
-import android.util.Log
-import androidx.paging.PageKeyedDataSource
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.ftadev.booksworld.api.RetrofitManager
 import com.ftadev.booksworld.model.BookImageModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class BooksDataSource(coroutineContext: CoroutineContext) :
-    PageKeyedDataSource<Int, BookImageModel>() {
+    PagingSource<Int, BookImageModel>() {
 
     private val apiService = RetrofitManager.apiService
     private val job = Job()
     private val scope = CoroutineScope(coroutineContext + job)
 
-    override fun loadInitial(
-        params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, BookImageModel>
-    ) {
-        scope.launch {
-            try {
-                val response = apiService.getBookImages(limit = params.requestedLoadSize, offset = 0)
-                when {
-                    response.isSuccessful ->
-                        callback.onResult(response.body() ?: listOf(), null, 0)
-                }
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, BookImageModel> {
+        val startPageIndex = 1 // Using 0 causes error
 
-            } catch (exception: Exception) {
-                Log.e("PostsDataSource", "Failed to fetch data!")
-            }
+        val page = params.key ?: startPageIndex
+        val offset = page - 1 // Because my API starts at 0
+        val limit = params.loadSize
+        return try {
+            val response = apiService.getBookImages(limit = limit, offset = offset)
+            val books = response.body() ?: listOf()
+            val prevKey = if (page == startPageIndex) null else page
+            val nextKey = if (books.isEmpty()) null else page + 1
+
+            LoadResult.Page(
+                data = books,
+                prevKey = prevKey,
+                nextKey = nextKey
+            )
+        } catch (exception: Exception) {
+            LoadResult.Error(exception)
         }
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, BookImageModel>) {
-        val page = params.key
-        scope.launch {
-            try {
-                val response =
-                    apiService.getBookImages(limit = params.requestedLoadSize, offset = page + 1)
-                when {
-                    response.isSuccessful ->
-                        callback.onResult(response.body() ?: listOf(), page + 1)
-                }
-            } catch (exception: Exception) {
-                Log.e("BooksDataSource", "Failed to fetch data!")
-            }
+    override fun getRefreshKey(state: PagingState<Int, BookImageModel>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }
-    }
-
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, BookImageModel>) {}
-
-    override fun invalidate() {
-        super.invalidate()
-        job.cancel()
     }
 }
