@@ -26,12 +26,22 @@ class DBRepository(application: Application) : CoroutineScope {
         launch  { addBookBG(book) }
     }
 
+    fun removeBook(book: BookModel) {
+        launch  { removeBookBG(book) }
+    }
+
     fun isMarked(bookId: Int) =
         bookDao?.isMarked(bookId)
 
     private suspend fun addBookBG(book: BookModel) {
         withContext(Dispatchers.IO) {
             bookDao?.addBook(book)
+        }
+    }
+
+    private suspend fun removeBookBG(book: BookModel) {
+        withContext(Dispatchers.IO) {
+            bookDao?.removeBook(book)
         }
     }
 

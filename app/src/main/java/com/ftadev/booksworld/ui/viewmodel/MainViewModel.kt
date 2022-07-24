@@ -32,6 +32,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun addBookmark(book: BookModel) = dbRepository.addBook(book)
 
+    fun removeBookmark(book: BookModel) = dbRepository.removeBook(book)
+
     fun getBooks(): LiveData<PagingData<BookImageModel>> =
         mainRepository.getBooks().cachedIn(viewModelScope)
 }
