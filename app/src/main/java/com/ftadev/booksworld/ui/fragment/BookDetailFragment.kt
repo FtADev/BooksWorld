@@ -35,10 +35,10 @@ class BookDetailFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         isMarked(args.bookId)
 
@@ -67,6 +67,7 @@ class BookDetailFragment : Fragment() {
                 Toast.makeText(context, "Added to Bookmark!", Toast.LENGTH_SHORT).show()
             } else {
                 binding.bookmark.setImageResource(R.drawable.bookmark_add)
+                mainViewModel.removeBookmark(resBook)
                 Toast.makeText(context, "Removed from Bookmark!", Toast.LENGTH_SHORT).show()
             }
         }

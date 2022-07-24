@@ -20,4 +20,6 @@ interface BookDao {
     @Query("SELECT EXISTS(SELECT 1 FROM book WHERE id = :bookId LIMIT 1)")
     fun isMarked(bookId: Int): LiveData<Boolean>
 
+    @Delete
+    fun removeBook(book: BookModel)
 }
