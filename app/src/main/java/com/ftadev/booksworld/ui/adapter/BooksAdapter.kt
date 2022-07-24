@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
 import androidx.navigation.findNavController
-import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ftadev.booksworld.R
@@ -15,7 +14,8 @@ import com.ftadev.booksworld.model.BookImageModel
 import com.ftadev.booksworld.paging.DiffUtilCallBack
 import com.ftadev.booksworld.ui.fragment.MainFragmentDirections
 
-class BookAdapter : PagedListAdapter<BookImageModel, BookAdapter.BookViewHolder>(DiffUtilCallBack()) {
+class BookAdapter :
+    PagingDataAdapter<BookImageModel, BookAdapter.BookViewHolder>(DiffUtilCallBack()) {
 
     class BookViewHolder(binding: CardBookBinding) : RecyclerView.ViewHolder(binding.root) {
         val photo = binding.image
@@ -25,7 +25,8 @@ class BookAdapter : PagedListAdapter<BookImageModel, BookAdapter.BookViewHolder>
         val binding = CardBookBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
-            false)
+            false
+        )
         return BookViewHolder(binding)
     }
 
@@ -34,11 +35,12 @@ class BookAdapter : PagedListAdapter<BookImageModel, BookAdapter.BookViewHolder>
         holder.itemView.run {
             animation =
                 AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
-            Glide.with(this).load(item?.photo).into(holder.photo) // It will have circular corner depends on its parent card xml
+            Glide.with(this).load(item?.photo)
+                .into(holder.photo) // It will have circular corner depends on its parent card xml
             setOnClickListener {
-                   item?.run {
-                       navigateToDetail(id, it)
-                   }
+                item?.run {
+                    navigateToDetail(id, it)
+                }
             }
         }
     }

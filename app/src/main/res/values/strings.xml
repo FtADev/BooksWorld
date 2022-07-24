@@ -20,4 +20,8 @@
     <string name="sample">Hellooooo ALL Boook</string>
     <string name="number_of_pages">Number of pages:</string>
     <string name="view_book">View Book</string>
+    <string name="search">search</string>
+    <string name="bookmark">bookmark</string>
+    <string name="back">back</string>
+    <string name="photo">photo</string>
 </resources>
