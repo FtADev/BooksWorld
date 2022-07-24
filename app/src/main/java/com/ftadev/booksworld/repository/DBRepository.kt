@@ -22,32 +22,26 @@ class DBRepository(application: Application) : CoroutineScope {
         bookDao = db?.bookDao()
     }
 
-    fun addBook(book: BookModel) {
-        launch  { addBookBG(book) }
-    }
-
-    fun removeBook(book: BookModel) {
-        launch  { removeBookBG(book) }
-    }
-
-    fun isMarked(bookId: Int) =
-        bookDao?.isMarked(bookId)
-
-    private suspend fun addBookBG(book: BookModel) {
-        withContext(Dispatchers.IO) {
-            bookDao?.addBook(book)
-        }
-    }
-
-    private suspend fun removeBookBG(book: BookModel) {
-        withContext(Dispatchers.IO) {
-            bookDao?.removeBook(book)
-        }
-    }
-
     fun getBook() = bookDao?.getAllBooks()
 
     fun getBook(id: Int) = bookDao?.getBook(id)
 
+    fun isMarked(bookId: Int) =
+        bookDao?.isMarked(bookId)
 
+    fun addBook(book: BookModel) =
+        launch { addBookBG(book) }
+
+    fun removeBook(book: BookModel) =
+        launch { removeBookBG(book) }
+
+    private suspend fun addBookBG(book: BookModel) =
+        withContext(Dispatchers.IO) {
+            bookDao?.addBook(book)
+        }
+
+    private suspend fun removeBookBG(book: BookModel) =
+        withContext(Dispatchers.IO) {
+            bookDao?.removeBook(book)
+        }
 }

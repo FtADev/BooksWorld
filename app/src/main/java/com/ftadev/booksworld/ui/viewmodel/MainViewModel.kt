@@ -20,20 +20,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val bookInfoSuccessLiveData = mainRepository.bookSuccessLiveData
     val bookInfoFailureLiveData = mainRepository.bookFailureLiveData
 
-    fun isMarked(id: Int): LiveData<Boolean>? = dbRepository.isMarked(id)
+    fun getBooks(): LiveData<PagingData<BookImageModel>> =
+        mainRepository.getBooks().cachedIn(viewModelScope)
 
-    fun getBookInfo(id: Int) {
+    fun getBookInfo(id: Int) =
         viewModelScope.launch { mainRepository.getBookInfo(id) }
-    }
 
     fun getBookmarkBooks() = dbRepository.getBook()
 
     fun getBookmarkInfo(id: Int) = dbRepository.getBook(id)
 
+    fun isMarked(id: Int): LiveData<Boolean>? = dbRepository.isMarked(id)
+
     fun addBookmark(book: BookModel) = dbRepository.addBook(book)
 
     fun removeBookmark(book: BookModel) = dbRepository.removeBook(book)
-
-    fun getBooks(): LiveData<PagingData<BookImageModel>> =
-        mainRepository.getBooks().cachedIn(viewModelScope)
 }
